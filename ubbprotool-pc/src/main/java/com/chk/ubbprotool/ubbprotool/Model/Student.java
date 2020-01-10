@@ -1,0 +1,54 @@
+package com.chk.ubbprotool.ubbprotool.Model;
+
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Entity
+@Table(name = "Student")
+public class Student {
+    @Id @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="student_id")
+    private int studentId;
+
+    @Column(name="first_name") @NonNull
+    private String firstName;
+
+    @Column(name="last_name") @NonNull
+    private String lastName;
+
+    @Column(name="email") @NonNull
+    private String email;
+
+    @Column(name="password") @NonNull
+    private String password;
+
+    @Column(name="major") @NonNull
+
+    private String major;
+
+    @Column(name="university") @NonNull
+    private String university;
+
+    @Column(name="faculty") @NonNull
+    private String faculty;
+
+    @ManyToOne
+    @JoinColumn(name="subgroup_id", nullable=false)
+    private Subgroup subgroup;
+
+    @OneToMany(mappedBy = "student")
+    Set<Change> changes;
+
+
+
+
+}
