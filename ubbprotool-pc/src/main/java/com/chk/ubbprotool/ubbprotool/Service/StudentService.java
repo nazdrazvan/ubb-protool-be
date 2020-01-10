@@ -1,8 +1,10 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
-import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface StudentService {

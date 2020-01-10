@@ -1,14 +1,19 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
+import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
+import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
+@ComponentScan(basePackages = "com.chk.ubbprotool.ubbprotool")
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
@@ -18,30 +23,34 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
     @Override
+    @Transactional
     public void createStudent(StudentDTO student) {
-        Student stud = studentMapper.map(student,stud);
-        studentRepository.save(stud);
+        Student stud = studentMapper.toEntity(student);
+        studentRepository.saveData(stud);
     }
 
     @Override
+    @Transactional
     public void deleteStudent(int studentId) {
-     studentRepository.deleteById(studentId);
+     studentRepository.removeData(studentId);
     }
 
     @Override
+    @Transactional
     public void upgradeStudent(StudentDTO student) {
-        Student stud = studentMapper.map(student,stud);
-        studentRepository.save(stud);
+        Student stud = studentMapper.toEntity(student);
+        studentRepository.saveData(stud);
     }
 
     @Override
+    @Transactional
     public List<StudentDTO> findAllStudents() {
-        List<Student> students =  studentRepository.findAll();
+        //List<Student> students =  studentRepository.findAll();
         List<StudentDTO> studentDTOList = new ArrayList<StudentDTO>();
 
-        for (Student stud : students )
+        for (Student stud : studentRepository.findAll() )
         {
-            StudentDTO studDTO = studentMapper.map(stud , stud) ;
+            StudentDTO studDTO = studentMapper.toDTO(stud) ;
             studentDTOList.add(studDTO);
         }
 
@@ -49,7 +58,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public StudentDTO findById(int id) {
-        return studentRepository.findById(id);
+        Student student = studentRepository.findById(id);
+        return studentMapper.toDTO(student);
+
+
     }
 }

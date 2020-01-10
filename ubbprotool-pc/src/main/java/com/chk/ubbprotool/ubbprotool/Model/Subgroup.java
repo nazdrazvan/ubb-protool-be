@@ -1,10 +1,7 @@
 package com.chk.ubbprotool.ubbprotool.Model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,6 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
+@Data
 @Table(name = "Subgroup")
 public class Subgroup {
     @Id
