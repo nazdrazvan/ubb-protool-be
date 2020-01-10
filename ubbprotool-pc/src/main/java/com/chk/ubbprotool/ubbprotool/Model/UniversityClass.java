@@ -35,6 +35,9 @@ public class UniversityClass {
     @Column(name="location") @NonNull
     private String classLocation;
 
+    @Column(name="duration") @NonNull
+    private int classDuration;
+
     @ManyToOne
     @JoinColumn(name="teacher_id", nullable=false)
     private Teacher teacher;
