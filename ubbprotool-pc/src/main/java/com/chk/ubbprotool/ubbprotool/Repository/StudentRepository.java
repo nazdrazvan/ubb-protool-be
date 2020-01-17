@@ -1,12 +1,9 @@
 package com.chk.ubbprotool.ubbprotool.Repository;
 
-import com.chk.ubbprotool.ubbprotool.Model.Course;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;

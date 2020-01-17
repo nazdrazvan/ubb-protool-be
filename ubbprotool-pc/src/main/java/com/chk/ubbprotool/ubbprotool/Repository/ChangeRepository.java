@@ -1,14 +1,56 @@
 package com.chk.ubbprotool.ubbprotool.Repository;
 
 import com.chk.ubbprotool.ubbprotool.Model.Change;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.chk.ubbprotool.ubbprotool.Model.Student;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Repository
-public interface ChangeRepository extends JpaRepository<Change, Integer> {
+public class ChangeRepository {
+    @Autowired
+    private SessionFactory sessionFactory;
 
-    Change findById(int id);
+
+    public List<Change> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Change> cq = cb.createQuery(Change.class);
+        Root<Change> root = cq.from(Change.class);
+        cq.select(root);
+        Query query = session.createQuery(cq);
+        return query.getResultList();
+    }
+
+
+    public void removeData(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Change change = session.byId(Change.class).load(id);session.delete(change);
+        session.flush();
+        session.clear();
+    }
+
+
+    public void updateData(Change object) {
+
+    }
+
+
+    public void saveData(Change change) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.save(change);
+    }
+
+
+    public Change findById(int theId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession.get(Change.class, theId);
+    }
 }

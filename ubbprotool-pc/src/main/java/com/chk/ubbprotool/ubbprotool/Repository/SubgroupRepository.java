@@ -1,7 +1,7 @@
 package com.chk.ubbprotool.ubbprotool.Repository;
 
 import com.chk.ubbprotool.ubbprotool.Model.Student;
-import com.chk.ubbprotool.ubbprotool.Model.Teacher;
+import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +14,16 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
-public class TeacherRepository {
+public class SubgroupRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
 
-    public List<Teacher> findAll() {
+    public List<Subgroup> findAll() {
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<Teacher> cq = cb.createQuery(Teacher.class);
-        Root<Teacher> root = cq.from(Teacher.class);
+        CriteriaQuery<Subgroup> cq = cb.createQuery(Subgroup.class);
+        Root<Subgroup> root = cq.from(Subgroup.class);
         cq.select(root);
         Query query = session.createQuery(cq);
         return query.getResultList();
@@ -32,25 +32,25 @@ public class TeacherRepository {
 
     public void removeData(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Teacher Teacher = session.byId(Teacher.class).load(id);session.delete(Teacher);
+        Subgroup subgroup = session.byId(Subgroup.class).load(id);session.delete(subgroup);
         session.flush();
         session.clear();
     }
 
 
-    public void updateData(Teacher object) {
+    public void updateData(Subgroup object) {
 
     }
 
 
-    public void saveData(Teacher teacher) {
+    public void saveData(Subgroup subgroup) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.save(teacher);
+        currentSession.save(subgroup);
     }
 
 
-    public Teacher findById(int theId) {
+    public Subgroup findById(int theId) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(Teacher.class, theId);
+        return currentSession.get(Subgroup.class, theId);
     }
 }

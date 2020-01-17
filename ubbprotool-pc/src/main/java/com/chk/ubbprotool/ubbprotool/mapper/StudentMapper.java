@@ -3,20 +3,10 @@ package com.chk.ubbprotool.ubbprotool.mapper;
 import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.stereotype.Component;
-
-
-
 
 @Component
 public  class StudentMapper {
-
-
 
     public StudentDTO toDTO(Student stud)
     {

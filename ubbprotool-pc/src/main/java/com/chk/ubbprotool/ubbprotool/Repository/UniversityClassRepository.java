@@ -1,11 +1,10 @@
 package com.chk.ubbprotool.ubbprotool.Repository;
 
 import com.chk.ubbprotool.ubbprotool.Model.Student;
-import com.chk.ubbprotool.ubbprotool.Model.Teacher;
+import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,17 +12,16 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Repository
-public class TeacherRepository {
+public class UniversityClassRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
 
-    public List<Teacher> findAll() {
+    public List<UniversityClass> findAll() {
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<Teacher> cq = cb.createQuery(Teacher.class);
-        Root<Teacher> root = cq.from(Teacher.class);
+        CriteriaQuery<UniversityClass> cq = cb.createQuery(UniversityClass.class);
+        Root<UniversityClass> root = cq.from(UniversityClass.class);
         cq.select(root);
         Query query = session.createQuery(cq);
         return query.getResultList();
@@ -32,25 +30,25 @@ public class TeacherRepository {
 
     public void removeData(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Teacher Teacher = session.byId(Teacher.class).load(id);session.delete(Teacher);
+        UniversityClass univClass = session.byId(UniversityClass.class).load(id);session.delete(univClass);
         session.flush();
         session.clear();
     }
 
 
-    public void updateData(Teacher object) {
+    public void updateData(UniversityClass object) {
 
     }
 
 
-    public void saveData(Teacher teacher) {
+    public void saveData(UniversityClass univClass) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.save(teacher);
+        currentSession.save(univClass);
     }
 
 
-    public Teacher findById(int theId) {
+    public UniversityClass findById(int theId) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(Teacher.class, theId);
+        return currentSession.get(UniversityClass.class, theId);
     }
 }
