@@ -37,7 +37,7 @@ public class MessageServiceImpl implements MessageService{
     @Override
     @Transactional
     public void upgradeMessage(MessageDTO message) {
-        messageRepository.saveData(messageMapper.toEntity(message));
+        messageRepository.updateData(messageMapper.toEntity(message));
     }
 
     @Override

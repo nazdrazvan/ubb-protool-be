@@ -1,13 +1,20 @@
 package com.chk.ubbprotool.ubbprotool.mapper;
 
+import com.chk.ubbprotool.ubbprotool.Model.Change;
 import com.chk.ubbprotool.ubbprotool.Model.Course;
 import com.chk.ubbprotool.ubbprotool.Model.Message;
+import com.chk.ubbprotool.ubbprotool.Repository.ChangeRepository;
 import com.chk.ubbprotool.ubbprotool.dto.CourseDTO;
 import com.chk.ubbprotool.ubbprotool.dto.MessageDTO;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Component
 public class MessageMapper {
+
+    @Autowired
+    private ChangeRepository changeRepository;
+
     public MessageDTO toDTO(Message source)
     {
         MessageDTO result = new MessageDTO();
@@ -16,7 +23,7 @@ public class MessageMapper {
         result.setMessageDate(source.getMessageDate());
         result.setMessageTime(source.getMessageTime());
         result.setMessageText(source.getMessageText());
-        result.setChange(source.getChange());
+        result.setChangeId(source.getChange().getChangeId());
 
         return result;
     }
@@ -29,7 +36,8 @@ public class MessageMapper {
         result.setMessageDate(source.getMessageDate());
         result.setMessageTime(source.getMessageTime());
         result.setMessageText(source.getMessageText());
-        result.setChange(source.getChange());
+        Change c = changeRepository.findById(source.getChangeId());
+        result.setChange(c);
 
         return result;
     }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,21 +23,25 @@ public class TeacherServiceImpl implements TeacherService {
     private TeacherMapper teacherMapper;
 
     @Override
+    @Transactional
     public void createTeacher(TeacherDTO teacher) {
         teacherRepository.saveData(teacherMapper.toEntity(teacher));
     }
 
     @Override
+    @Transactional
     public void deleteTeacher(int teacherId) {
         teacherRepository.removeData(teacherId);
     }
 
     @Override
+    @Transactional
     public void upgradeTeacher(TeacherDTO teacher) {
-        teacherRepository.saveData(teacherMapper.toEntity(teacher));
+        teacherRepository.updateData(teacherMapper.toEntity(teacher));
     }
 
     @Override
+    @Transactional
     public List<TeacherDTO> findAllTeachers() {
         List<TeacherDTO> teacherDTOList = new ArrayList<TeacherDTO>();
 
@@ -50,6 +55,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    @Transactional
     public TeacherDTO findById(int id) {
         Teacher teacher = teacherRepository.findById(id);
         return teacherMapper.toDTO(teacher);

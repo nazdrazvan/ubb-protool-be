@@ -41,7 +41,7 @@ public class UniversityClassServiceImpl implements UniversityClassService{
     @Transactional
     public void updateUniversityClass(UniversityClassDTO universityClassDTO) {
         UniversityClass univ = universityClassMapper.toEntity(universityClassDTO);
-        universityClassRepository.saveData(univ);
+        universityClassRepository.updateData(univ);
     }
 
     @Override
@@ -62,4 +62,6 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         UniversityClass universityClass = universityClassRepository.findById(id);
         return universityClassMapper.toDTO(universityClass);
     }
+
+
 }

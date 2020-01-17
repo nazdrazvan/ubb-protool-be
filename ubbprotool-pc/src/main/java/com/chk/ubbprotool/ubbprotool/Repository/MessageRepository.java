@@ -39,7 +39,7 @@ public class MessageRepository {
     }
 
 
-    public void updateData(Change object) {
+    public void updateData(Message object) {
         Session session = sessionFactory.getCurrentSession();
         session.update(object);
     }

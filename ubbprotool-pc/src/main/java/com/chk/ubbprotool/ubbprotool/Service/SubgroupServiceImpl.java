@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,21 +24,25 @@ public class SubgroupServiceImpl implements SubgroupService {
 
 
     @Override
+    @Transactional
     public void createSubgroup(SubgroupDTO subgroup) {
         subgroupRepository.saveData(subgroupMapper.toEntity(subgroup));
     }
 
     @Override
+    @Transactional
     public void deleteSubgroup(int subgroupId) {
         subgroupRepository.removeData(subgroupId);
     }
 
     @Override
+    @Transactional
     public void upgradeSubgroup(SubgroupDTO subgroup) {
-        subgroupRepository.saveData(subgroupMapper.toEntity(subgroup));
+        subgroupRepository.updateData(subgroupMapper.toEntity(subgroup));
     }
 
     @Override
+    @Transactional
     public List<SubgroupDTO> findAllSubgroups() {
         List<SubgroupDTO> subgroupDTOList = new ArrayList<SubgroupDTO>();
 
@@ -51,6 +56,7 @@ public class SubgroupServiceImpl implements SubgroupService {
     }
 
     @Override
+    @Transactional
     public SubgroupDTO findById(int id) {
         Subgroup subgroup = subgroupRepository.findById(id);
         return subgroupMapper.toDTO(subgroup);

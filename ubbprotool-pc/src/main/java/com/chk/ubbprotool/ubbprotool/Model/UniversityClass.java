@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +29,7 @@ public class UniversityClass {
     private int classWeek;
 
     @Column(name="hour") @NonNull
-    private Time classHour;
+    private String classHour;
 
     @Column(name="location") @NonNull
     private String classLocation;
@@ -47,5 +48,8 @@ public class UniversityClass {
     @ManyToOne
     @JoinColumn(name="subgroup_id", nullable=false)
     private Subgroup subgroup;
+
+    @OneToMany(mappedBy = "universityClass")
+    Set<Change> changes;
 
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,21 +23,25 @@ public class CourseServiceImpl implements CourseService {
     private CourseMapper courseMapper;
 
     @Override
+    @Transactional
     public void createCourse(CourseDTO course) {
         courseRepository.saveData(courseMapper.toEntity(course));
     }
 
     @Override
+    @Transactional
     public void deleteCourse(int courseId) {
         courseRepository.removeData(courseId);
     }
 
     @Override
+    @Transactional
     public void upgradeCourse(CourseDTO course) {
-        courseRepository.saveData(courseMapper.toEntity(course));
+        courseRepository.updateData(courseMapper.toEntity(course));
     }
 
     @Override
+    @Transactional
     public List<CourseDTO> findAllCourses() {
         List<CourseDTO> courseDTOList = new ArrayList<CourseDTO>();
 
@@ -50,7 +55,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    @Transactional
     public CourseDTO findById(int id) {
         return courseMapper.toDTO(courseRepository.findById(id));
     }
+
+
+
 }

@@ -3,10 +3,15 @@ package com.chk.ubbprotool.ubbprotool.mapper;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
+import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public  class StudentMapper {
+
+    @Autowired
+    private SubgroupRepository subgroupRepository;
 
     public StudentDTO toDTO(Student stud)
     {
@@ -35,8 +40,7 @@ public  class StudentMapper {
         student.setLastName(stud.getLastName());
         student.setMajor(stud.getMajor());
         student.setUniversity(stud.getUniversity());
-        Subgroup sb = new Subgroup();
-        sb.setSubgroupId(stud.getSubgroupId());
+        Subgroup sb = subgroupRepository.findById(stud.getSubgroupId());
         student.setSubgroup(sb);
 
         return student;

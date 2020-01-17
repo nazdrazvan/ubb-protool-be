@@ -30,15 +30,15 @@ public class UniversityClassDTO {
 
     private int classWeek;
 
-    private Time classHour;
+    private String classHour;
 
     private String classLocation;
 
     private int classDuration;
 
-    private Teacher teacher;
+    private int teacherId;
 
-    private Course course;
+    private int courseId;
 
-    private Subgroup subgroup;
+    private int subgroupId;
 }

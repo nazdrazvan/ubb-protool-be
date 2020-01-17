@@ -23,5 +23,5 @@ public class MessageDTO {
     private Date messageDate;
     private Time messageTime;
     private String messageText;
-    private Change change;
+    private int changeId;
 }
