@@ -1,9 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -12,6 +9,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Data
 @Entity
 @Table(name = "Course")
 public class Course {

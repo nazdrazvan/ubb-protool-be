@@ -1,9 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -11,6 +8,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Data
 @Entity
 @Table(name = "Schedule_Change")
 public class Change {
