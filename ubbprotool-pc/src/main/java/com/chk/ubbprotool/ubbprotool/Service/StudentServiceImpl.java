@@ -1,18 +1,19 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
-import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
 import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 @ComponentScan(basePackages = "com.chk.ubbprotool.ubbprotool")
 public class StudentServiceImpl implements StudentService {
 

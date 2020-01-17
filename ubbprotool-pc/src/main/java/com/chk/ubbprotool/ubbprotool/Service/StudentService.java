@@ -1,7 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
-import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
-import org.springframework.stereotype.Component;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

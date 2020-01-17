@@ -1,19 +1,19 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
-import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import com.chk.ubbprotool.ubbprotool.Repository.UniversityClassRepository;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
 import com.chk.ubbprotool.ubbprotool.mapper.UniversityClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 @ComponentScan(basePackages = "com.chk.ubbprotool.ubbprotool")
 public class UniversityClassServiceImpl implements UniversityClassService{
 
@@ -59,6 +59,7 @@ public class UniversityClassServiceImpl implements UniversityClassService{
     @Override
     @Transactional
     public UniversityClassDTO findById(int id) {
-        return null;
+        UniversityClass universityClass = universityClassRepository.findById(id);
+        return universityClassMapper.toDTO(universityClass);
     }
 }

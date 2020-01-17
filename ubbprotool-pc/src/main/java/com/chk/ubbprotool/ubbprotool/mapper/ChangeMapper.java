@@ -2,7 +2,9 @@ package com.chk.ubbprotool.ubbprotool.mapper;
 
 import com.chk.ubbprotool.ubbprotool.Model.Change;
 import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ChangeMapper {
     public ChangeDTO toDTO(Change source)
     {

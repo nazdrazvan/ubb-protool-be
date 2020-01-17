@@ -2,7 +2,9 @@ package com.chk.ubbprotool.ubbprotool.mapper;
 
 import com.chk.ubbprotool.ubbprotool.dto.SubgroupDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SubgroupMapper {
 
     public Subgroup toEntity(SubgroupDTO source)

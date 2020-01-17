@@ -2,7 +2,9 @@ package com.chk.ubbprotool.ubbprotool.mapper;
 
 import com.chk.ubbprotool.ubbprotool.dto.CourseDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Course;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CourseMapper {
 
     public CourseDTO toDTO(Course source)

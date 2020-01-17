@@ -4,7 +4,9 @@ import com.chk.ubbprotool.ubbprotool.Model.Course;
 import com.chk.ubbprotool.ubbprotool.Model.Message;
 import com.chk.ubbprotool.ubbprotool.dto.CourseDTO;
 import com.chk.ubbprotool.ubbprotool.dto.MessageDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MessageMapper {
     public MessageDTO toDTO(Message source)
     {

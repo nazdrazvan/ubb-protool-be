@@ -1,6 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.mapper;
 
-import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
 import org.springframework.stereotype.Component;

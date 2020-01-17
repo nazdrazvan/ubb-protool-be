@@ -33,25 +33,25 @@ public class MessageRepository {
 
     public void removeData(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Change change = session.byId(Change.class).load(id);session.delete(change);
+        Message message = session.byId(Message.class).load(id);session.delete(message);
         session.flush();
         session.clear();
     }
 
 
-    public void updateData(Change object) {
+    public void updateData(Message object) {
 
     }
 
 
-    public void saveData(Change change) {
+    public void saveData(Message message) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.save(change);
+        currentSession.save(message);
     }
 
 
-    public Change findById(int theId) {
+    public Message findById(int theId) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(Change.class, theId);
+        return currentSession.get(Message.class, theId);
     }
 }

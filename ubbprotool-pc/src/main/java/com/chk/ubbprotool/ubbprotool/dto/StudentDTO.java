@@ -1,13 +1,10 @@
-package com.chk.ubbprotool.ubbprotool.DTO;
+package com.chk.ubbprotool.ubbprotool.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.stereotype.Component;
-
-import javax.persistence.Column;
 
 
 @AllArgsConstructor

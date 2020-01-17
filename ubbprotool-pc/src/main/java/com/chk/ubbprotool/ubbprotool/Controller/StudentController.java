@@ -1,6 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.Controller;
 
-import com.chk.ubbprotool.ubbprotool.DTO.StudentDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

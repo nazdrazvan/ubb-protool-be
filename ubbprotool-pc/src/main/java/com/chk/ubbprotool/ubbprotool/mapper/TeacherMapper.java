@@ -2,7 +2,9 @@ package com.chk.ubbprotool.ubbprotool.mapper;
 
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Teacher;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TeacherMapper {
 
     public TeacherDTO toDTO(Teacher source)
