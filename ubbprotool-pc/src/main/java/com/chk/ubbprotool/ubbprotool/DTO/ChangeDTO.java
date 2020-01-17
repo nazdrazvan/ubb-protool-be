@@ -19,7 +19,7 @@ import java.sql.Date;
 @Component
 @JsonComponent
 public class ChangeDTO {
-    private int ChangeId;
+    private int changeId;
     private String changeStatus;
     private Date startDate;
     private Date endDate;

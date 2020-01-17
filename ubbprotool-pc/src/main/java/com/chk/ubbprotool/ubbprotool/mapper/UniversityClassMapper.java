@@ -14,6 +14,7 @@ public class UniversityClassMapper {
     {
         UniversityClass result = new UniversityClass();
 
+        result.setClassId(universityClassDTO.getClassId());
         result.setSubgroup(universityClassDTO.getSubgroup());
         result.setClassDay(universityClassDTO.getClassDay());
         result.setClassDuration(universityClassDTO.getClassDuration());
@@ -32,6 +33,7 @@ public class UniversityClassMapper {
     {
         UniversityClassDTO result = new UniversityClassDTO();
 
+        result.setClassId(universityClass.getClassId());
         result.setSubgroup(universityClass.getSubgroup());
         result.setClassDay(universityClass.getClassDay());
         result.setClassDuration(universityClass.getClassDuration());

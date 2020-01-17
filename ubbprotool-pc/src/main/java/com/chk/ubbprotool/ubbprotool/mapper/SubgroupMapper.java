@@ -9,6 +9,7 @@ public class SubgroupMapper {
     {
         Subgroup result = new Subgroup();
 
+        result.setSubgroupId(source.getSubgroupId());
         result.setGroupNumber(source.getGroupNumber());
         result.setSubgroupNumber(source.getSubgroupNumber());
 
@@ -19,6 +20,7 @@ public class SubgroupMapper {
     {
         SubgroupDTO result = new SubgroupDTO();
 
+        result.setSubgroupId(source.getSubgroupId());
         result.setGroupNumber(source.getGroupNumber());
         result.setSubgroupNumber(source.getSubgroupNumber());
 

@@ -17,6 +17,7 @@ import java.sql.Date;
 @JsonComponent
 public class CourseDTO {
 
+    private int courseId;
 
     private String courseName;
 

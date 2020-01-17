@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public void upgradeStudent(StudentDTO student) {
         Student stud = studentMapper.toEntity(student);
-        studentRepository.saveData(stud);
+        studentRepository.updateData(stud);
     }
 
     @Override

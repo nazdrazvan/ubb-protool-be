@@ -9,6 +9,7 @@ public class TeacherMapper {
     {
         TeacherDTO result = new TeacherDTO();
 
+        result.setTeacherId(source.getTeacherId());
         result.setTeacherAvailability(source.isTeacherAvailability());
         result.setTeacherDepartment(source.getTeacherDepartment());
         result.setTeacherEmail(source.getTeacherEmail());
@@ -28,6 +29,7 @@ public class TeacherMapper {
     {
         Teacher result = new Teacher();
 
+        result.setTeacherId(source.getTeacherId());
         result.setTeacherAvailability(source.isTeacherAvailability());
         result.setTeacherDepartment(source.getTeacherDepartment());
         result.setTeacherEmail(source.getTeacherEmail());

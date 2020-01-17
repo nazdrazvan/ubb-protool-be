@@ -9,6 +9,7 @@ public class CourseMapper {
     {
         CourseDTO result = new CourseDTO();
 
+        result.setCourseId(source.getCourseId());
         result.setCourseEndDate(source.getCourseEndDate());
         result.setCourseFaculty(source.getCourseFaculty());
         result.setCourseName(source.getCourseName());
@@ -23,6 +24,7 @@ public class CourseMapper {
     {
         Course result = new Course();
 
+        result.setCourseId(source.getCourseId());
         result.setCourseEndDate(source.getCourseEndDate());
         result.setCourseFaculty(source.getCourseFaculty());
         result.setCourseName(source.getCourseName());

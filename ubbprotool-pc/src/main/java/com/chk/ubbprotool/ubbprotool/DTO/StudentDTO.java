@@ -17,6 +17,7 @@ import javax.persistence.Column;
 @JsonComponent
 public class StudentDTO {
 
+    private int studentId;
     private String firstName;
     private String lastName;
     private String email;

@@ -39,7 +39,8 @@ public class SubgroupRepository {
 
 
     public void updateData(Subgroup object) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.update(object);
     }
 
 
