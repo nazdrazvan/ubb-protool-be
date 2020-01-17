@@ -63,7 +63,15 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO findById(int id) {
         Student student = studentRepository.findById(id);
         return studentMapper.toDTO(student);
+    }
 
-
+    @Override
+    @Transactional
+    public StudentDTO findStudentByEmailAndPassword(String email, String password) {
+        Student student = studentRepository.findByEmailAndPassword(email, password);
+        if (student == null){
+            return null;
+        }
+        return studentMapper.toDTO(student);
     }
 }

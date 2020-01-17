@@ -26,9 +26,9 @@ public class TeacherDTO {
 
     private String teacherLastName;
 
-    private String teacherEmail;
+    private String email;
 
-    private String teacherPassword;
+    private String password;
 
     private boolean teacherEnabled;
 

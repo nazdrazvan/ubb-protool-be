@@ -60,4 +60,14 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = teacherRepository.findById(id);
         return teacherMapper.toDTO(teacher);
     }
+
+    @Override
+    @Transactional
+    public TeacherDTO findTeacherByEmailAndPassword(String email, String password) {
+        Teacher teacher = teacherRepository.findByEmailAndPassword(email, password);
+        if (teacher == null){
+            return null;
+        }
+        return teacherMapper.toDTO(teacher);
+    }
 }

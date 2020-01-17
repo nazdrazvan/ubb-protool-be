@@ -1,12 +1,12 @@
 package com.chk.ubbprotool.ubbprotool.Repository;
 
-import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -53,5 +53,20 @@ public class TeacherRepository {
     public Teacher findById(int theId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(Teacher.class, theId);
+    }
+
+    public Teacher findByEmailAndPassword(String email, String password){
+        Session session = sessionFactory.getCurrentSession();
+        Query hql = session.createQuery("from Teacher t where t.email = :email and t.password = :password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+
+        Teacher foundTeach = null;
+        try {
+            foundTeach = (Teacher) hql.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+        return foundTeach;
     }
 }

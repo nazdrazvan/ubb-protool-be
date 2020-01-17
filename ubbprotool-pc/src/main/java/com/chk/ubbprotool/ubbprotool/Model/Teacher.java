@@ -34,10 +34,10 @@ public class Teacher {
     private String teacherLastName;
 
     @Column(name="email") @NonNull
-    private String teacherEmail;
+    private String email;
 
     @Column(name="password") @NonNull
-    private String teacherPassword;
+    private String password;
 
     @Column(name="enabled") @NonNull
     private boolean teacherEnabled;

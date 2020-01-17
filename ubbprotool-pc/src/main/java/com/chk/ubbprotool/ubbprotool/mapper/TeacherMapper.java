@@ -14,12 +14,12 @@ public class TeacherMapper {
         result.setTeacherId(source.getTeacherId());
         result.setTeacherAvailability(source.isTeacherAvailability());
         result.setTeacherDepartment(source.getTeacherDepartment());
-        result.setTeacherEmail(source.getTeacherEmail());
+        result.setEmail(source.getEmail());
         result.setTeacherEnabled(source.isTeacherEnabled());
         result.setTeacherFaculty(source.getTeacherFaculty());
         result.setTeacherFirstName(source.getTeacherFirstName());
         result.setTeacherLastName(source.getTeacherLastName());
-        result.setTeacherPassword(source.getTeacherPassword());
+        result.setPassword(source.getPassword());
         result.setTeacherUniversity(source.getTeacherUniversity());
         result.setTeacherWebSite(source.getTeacherWebSite());
 
@@ -34,12 +34,12 @@ public class TeacherMapper {
         result.setTeacherId(source.getTeacherId());
         result.setTeacherAvailability(source.isTeacherAvailability());
         result.setTeacherDepartment(source.getTeacherDepartment());
-        result.setTeacherEmail(source.getTeacherEmail());
+        result.setEmail(source.getEmail());
         result.setTeacherEnabled(source.isTeacherEnabled());
         result.setTeacherFaculty(source.getTeacherFaculty());
         result.setTeacherFirstName(source.getTeacherFirstName());
         result.setTeacherLastName(source.getTeacherLastName());
-        result.setTeacherPassword(source.getTeacherPassword());
+        result.setPassword(source.getPassword());
         result.setTeacherUniversity(source.getTeacherUniversity());
         result.setTeacherWebSite(source.getTeacherWebSite());
 

@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -55,4 +56,19 @@ public class StudentRepository  {
         return currentSession.get(Student.class, theId);
     }
 
+
+    public Student findByEmailAndPassword(String email, String password){
+        Session session = sessionFactory.getCurrentSession();
+        Query hql = session.createQuery("from Student s where s.email = :email and s.password = :password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+
+        Student foundStud = null;
+        try {
+            foundStud = (Student) hql.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+        return foundStud;
+    }
 }
