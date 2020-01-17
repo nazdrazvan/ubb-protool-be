@@ -1,7 +1,9 @@
 package com.chk.ubbprotool.ubbprotool.Controller;
 
+import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import com.chk.ubbprotool.ubbprotool.Service.UniversityClassService;
 import com.chk.ubbprotool.ubbprotool.Service.UniversityClassService;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -39,6 +42,13 @@ public class UniversityClassController {
     public ResponseEntity<String> updateUniversityClass(@RequestBody UniversityClassDTO theUser) throws IOException {
         universityClassService.updateUniversityClass(theUser);
         return ResponseEntity.ok("UniversityClass updated");
+    }
+
+    @PostMapping("/getSchedule")
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@RequestParam("StudentId") int studentId , @RequestParam("Date")String curentDate)
+    {
+        Date currentDate=Date.valueOf(curentDate);//converting string into sql date
+       return ResponseEntity.ok(universityClassService.getClassesForStudent(studentId, currentDate));
     }
 
 }

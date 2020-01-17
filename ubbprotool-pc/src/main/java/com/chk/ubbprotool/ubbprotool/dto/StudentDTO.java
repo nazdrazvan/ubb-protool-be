@@ -23,4 +23,5 @@ public class StudentDTO {
     private String university;
     private String faculty;
     private int subgroupId;
+
 }
