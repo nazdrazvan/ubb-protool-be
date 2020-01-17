@@ -11,6 +11,7 @@ public  class StudentMapper {
     public StudentDTO toDTO(Student stud)
     {
         StudentDTO student = new StudentDTO() ;
+        student.setStudentId(stud.getStudentId());
         student.setPassword(stud.getPassword());
         student.setEmail(stud.getEmail());
         student.setFaculty(stud.getFaculty());
@@ -26,6 +27,7 @@ public  class StudentMapper {
     public  Student toEntity(StudentDTO stud)
     {
         Student student = new Student() ;
+        student.setStudentId(stud.getStudentId());
         student.setPassword(stud.getPassword());
         student.setEmail(stud.getEmail());
         student.setFaculty(stud.getFaculty());

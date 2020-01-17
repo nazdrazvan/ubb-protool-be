@@ -12,6 +12,7 @@ public class MessageMapper {
     {
         MessageDTO result = new MessageDTO();
 
+        result.setMessageId(source.getMessageId());
         result.setMessageDate(source.getMessageDate());
         result.setMessageTime(source.getMessageTime());
         result.setMessageText(source.getMessageText());
@@ -24,6 +25,7 @@ public class MessageMapper {
     {
         Message result = new Message();
 
+        result.setMessageId(source.getMessageId());
         result.setMessageDate(source.getMessageDate());
         result.setMessageTime(source.getMessageTime());
         result.setMessageText(source.getMessageText());

@@ -22,6 +22,8 @@ import java.sql.Time;
 @JsonComponent
 public class UniversityClassDTO {
 
+    int classId;
+
     private String classType;
 
     private String classDay;

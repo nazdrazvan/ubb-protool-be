@@ -29,10 +29,16 @@ public class StudentController {
         return ResponseEntity.ok("Student saved");
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/deleteStudent")
     public ResponseEntity<String> deleteUser(@RequestParam("UserId") int theId) {
         studentService.deleteStudent(theId);
         return ResponseEntity.ok("Student deleted");
+    }
+
+    @PostMapping("/updateStudent")
+    public ResponseEntity<String> updateUser(@RequestBody StudentDTO theUser) throws IOException {
+        studentService.upgradeStudent(theUser);
+        return ResponseEntity.ok("Student updated");
     }
 
 

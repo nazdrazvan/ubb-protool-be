@@ -10,6 +10,7 @@ public class ChangeMapper {
     {
         ChangeDTO result = new ChangeDTO();
 
+        result.setChangeId(source.getChangeId());
         result.setChangeStatus(source.getChangeStatus());
         result.setStartDate(source.getStartDate());
         result.setEndDate(source.getEndDate());
@@ -24,6 +25,7 @@ public class ChangeMapper {
     {
         Change result = new Change();
 
+        result.setChangeId(source.getChangeId());
         result.setChangeStatus(source.getChangeStatus());
         result.setStartDate(source.getStartDate());
         result.setEndDate(source.getEndDate());

@@ -39,7 +39,8 @@ public class TeacherRepository {
 
 
     public void updateData(Teacher object) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.update(object);
     }
 
 

@@ -39,8 +39,9 @@ public class MessageRepository {
     }
 
 
-    public void updateData(Message object) {
-
+    public void updateData(Change object) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(object);
     }
 
 

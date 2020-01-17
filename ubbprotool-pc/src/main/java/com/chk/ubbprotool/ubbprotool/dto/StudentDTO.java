@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @JsonComponent
 public class StudentDTO {
 
+    private int studentId;
     private String firstName;
     private String lastName;
     private String email;
