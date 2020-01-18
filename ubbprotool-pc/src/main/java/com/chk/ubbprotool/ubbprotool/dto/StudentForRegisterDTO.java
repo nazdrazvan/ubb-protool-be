@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 @JsonComponent
 public class StudentForRegisterDTO {
-
     private Long studentId;
     private String firstName;
     private String lastName;

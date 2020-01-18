@@ -2,6 +2,7 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 
 import com.chk.ubbprotool.ubbprotool.Service.TeacherService;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
+import com.chk.ubbprotool.ubbprotool.dto.TeacherForEditDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +37,8 @@ public class TeacherController {
     }
 
     @PostMapping("/updateTeacher")
-    public ResponseEntity<String> updateTeacher(@RequestBody TeacherDTO theTeacher) throws IOException {
-        teacherService.upgradeTeacher(theTeacher);
+    public ResponseEntity<String> updateTeacher(@RequestBody TeacherForEditDTO theTeacher) throws IOException {
+        teacherService.editTeacher(theTeacher);
         return ResponseEntity.ok("Teacher updated");
     }
 

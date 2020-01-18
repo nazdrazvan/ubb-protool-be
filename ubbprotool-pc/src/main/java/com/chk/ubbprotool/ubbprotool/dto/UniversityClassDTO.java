@@ -12,24 +12,14 @@ import org.springframework.stereotype.Component;
 @Component
 @JsonComponent
 public class UniversityClassDTO {
-
     Long classId;
-
     private String classType;
-
     private String classDay;
-
     private int classWeek;
-
     private String classHour;
-
     private String classLocation;
-
     private int classDuration;
-
     private Long teacherId;
-
     private Long courseId;
-
     private Long subgroupId;
 }

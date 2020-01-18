@@ -3,9 +3,9 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Service.StudentService;
 import com.chk.ubbprotool.ubbprotool.dto.StudentForRegisterDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentForEditDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +39,8 @@ public class StudentController {
     }
 
     @PostMapping("/updateStudent")
-    public ResponseEntity<String> updateUser(@RequestBody StudentDTO theUser) throws IOException {
-        studentService.upgradeStudent(theUser);
+    public ResponseEntity<String> updateUser(@RequestBody StudentForEditDTO theUser) throws Exception {
+        studentService.updateStudent(theUser);
         return ResponseEntity.ok("Student updated");
     }
 
