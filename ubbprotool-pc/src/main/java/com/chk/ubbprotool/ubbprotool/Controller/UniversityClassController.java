@@ -76,4 +76,10 @@ public class UniversityClassController {
     public ResponseEntity<UniversityClassDTO> getStudentById(@PathVariable("classId") Long classId) throws IOException {
         return new ResponseEntity<>(universityClassService.findById(classId), HttpStatus.OK);
     }
+
+    @GetMapping("/get-all-students-by-class-id/{classId}")
+    public ResponseEntity<List<StudentDTO>> getAllStudentsByClassId(@PathVariable("classId") Long classId) throws IOException {
+        return new ResponseEntity<>(universityClassService.findAllStudentsByClassId(classId), HttpStatus.OK);
+    }
+
 }
