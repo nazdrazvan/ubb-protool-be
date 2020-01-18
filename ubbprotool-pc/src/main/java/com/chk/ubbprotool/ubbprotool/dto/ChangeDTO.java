@@ -25,5 +25,5 @@ public class ChangeDTO {
     private Date endDate;
     private UniversityClass universityClass;
     private int studentId;
-    private int messageId;
+//    private int messageId;
 }

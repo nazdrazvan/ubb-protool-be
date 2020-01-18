@@ -28,7 +28,7 @@ public class ChangeMapper {
         result.setEndDate(source.getEndDate());
         result.setUniversityClass(source.getUniversityClass());
         result.setStudentId(source.getStudent().getStudentId());
-        result.setMessageId(source.getMessage().getMessageId());
+//        result.setMessageId(source.getMessage().getMessageId());
 
         return result;
     }
@@ -44,8 +44,8 @@ public class ChangeMapper {
         result.setUniversityClass(source.getUniversityClass());
         Student s = studentRepository.findById(source.getStudentId());
         result.setStudent(s);
-        Message m = messageRepository.findById(source.getMessageId());
-        result.setMessage(m);
+//        Message m = messageRepository.findById(source.getMessageId());
+//        result.setMessage(m);
 
         return result;
     }
