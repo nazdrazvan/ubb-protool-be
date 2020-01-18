@@ -1,5 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.Controller;
 
+import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.Service.TeacherService;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherForEditDTO;
@@ -30,8 +31,14 @@ public class TeacherController {
         return ResponseEntity.ok("Teacher saved");
     }
 
+    @PostMapping("/activateTeacher")
+    public ResponseEntity<String> activateTeacher(@RequestBody TeacherDTO teacher) throws Exception {
+        teacherService.activateTeacher(teacher);
+        return ResponseEntity.ok("Teacher activated");
+    }
+
     @PostMapping("/deleteTeacher/{teacherId}")
-    public ResponseEntity<String> deleteTeacher(@PathVariable("teacherId") int teacherId) {
+    public ResponseEntity<String> deleteTeacher(@PathVariable("teacherId") Long teacherId) {
         teacherService.deleteTeacher(teacherId);
         return ResponseEntity.ok("Teacher deleted");
     }

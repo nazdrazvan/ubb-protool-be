@@ -43,7 +43,6 @@ public class AppContext {
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/ubbprotool");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
-
         return dataSource;
     }
 
