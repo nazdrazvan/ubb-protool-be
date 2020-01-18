@@ -57,9 +57,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional
     public CourseDTO findById(Long id) {
-        return courseMapper.toDTO(courseRepository.findById(id));
+        Course course = courseRepository.findById(id);
+        if (course == null) {
+            return null;
+        }
+        return courseMapper.toDTO(course);
     }
-
-
 
 }
