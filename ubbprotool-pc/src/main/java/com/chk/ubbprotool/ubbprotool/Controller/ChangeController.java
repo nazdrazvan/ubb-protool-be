@@ -29,9 +29,9 @@ public class ChangeController {
         return ResponseEntity.ok("Change saved");
     }
 
-    @PostMapping("/deleteChange")
-    public ResponseEntity<String> deleteChange(@RequestParam("ChangeId") int theId) {
-        changeService.deleteChange(theId);
+    @PostMapping("/deleteChange/{changeId}")
+    public ResponseEntity<String> deleteChange(@PathVariable("changeId") int changeId) {
+        changeService.deleteChange(changeId);
         return ResponseEntity.ok("Change deleted");
     }
 
