@@ -62,6 +62,9 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public StudentDTO findById(int id) {
         Student student = studentRepository.findById(id);
+        if (student == null) {
+            return null;
+        }
         return studentMapper.toDTO(student);
     }
 

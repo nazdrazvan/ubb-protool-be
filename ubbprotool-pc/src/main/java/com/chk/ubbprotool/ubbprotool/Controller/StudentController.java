@@ -3,6 +3,8 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +21,7 @@ public class StudentController {
 
     @GetMapping("/list")
     public ResponseEntity<List<StudentDTO>> listUsers() {
-        return  ResponseEntity.ok(studentService.findAllStudents());
+        return ResponseEntity.ok(studentService.findAllStudents());
     }
 
 
@@ -41,7 +43,8 @@ public class StudentController {
         return ResponseEntity.ok("Student updated");
     }
 
-
-
-
+    @GetMapping("/get-by-id/{student_id}")
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("student_id") int student_id) throws IOException {
+        return new ResponseEntity<>(studentService.findById(student_id), HttpStatus.OK);
+    }
 }

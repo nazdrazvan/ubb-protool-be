@@ -52,8 +52,13 @@ public class StudentRepository  {
 
 
     public Student findById(int theId) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(Student.class, theId);
+        try {
+            Session currentSession = sessionFactory.getCurrentSession();
+            return currentSession.get(Student.class, theId);
+
+        }catch (Error e){
+            return null;
+        }
     }
 
 
