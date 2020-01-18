@@ -108,7 +108,7 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Override
     @Transactional
-    public List<UniversityClassDTO> getClassesForTeacher(int teacherId, Date date) {
+    public List<UniversityClassDTO> getClassesForTeacher(Long teacherId, Date date) {
 
         Teacher teacher = teacherRepository.findById(teacherId);
 

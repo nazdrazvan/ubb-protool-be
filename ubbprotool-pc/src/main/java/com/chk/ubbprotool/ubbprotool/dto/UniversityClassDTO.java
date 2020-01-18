@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @JsonComponent
 public class UniversityClassDTO {
 
-    int classId;
+    Long classId;
 
     private String classType;
 
@@ -27,9 +27,9 @@ public class UniversityClassDTO {
 
     private int classDuration;
 
-    private int teacherId;
+    private Long teacherId;
 
-    private int courseId;
+    private Long courseId;
 
     private Long subgroupId;
 }

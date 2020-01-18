@@ -30,7 +30,7 @@ public class CourseRepository {
     }
 
 
-    public void removeData(int id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Course course = session.byId(Course.class).load(id);session.delete(course);
         session.flush();
@@ -50,7 +50,7 @@ public class CourseRepository {
     }
 
 
-    public Course findById(int theId) {
+    public Course findById(Long theId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(Course.class, theId);
     }

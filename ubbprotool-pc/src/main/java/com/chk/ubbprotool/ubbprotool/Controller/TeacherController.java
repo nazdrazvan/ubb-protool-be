@@ -30,7 +30,7 @@ public class TeacherController {
     }
 
     @PostMapping("/deleteTeacher/{teacherId}")
-    public ResponseEntity<String> deleteTeacher(@RequestParam("teacherId") int teacherId) {
+    public ResponseEntity<String> deleteTeacher(@PathVariable("teacherId") int teacherId) {
         teacherService.deleteTeacher(teacherId);
         return ResponseEntity.ok("Teacher deleted");
     }
@@ -42,7 +42,7 @@ public class TeacherController {
     }
 
     @GetMapping("/get-by-id/{teacherId}")
-    public ResponseEntity<TeacherDTO> getTeacherById(@PathVariable("teacherId") int teacherId) {
+    public ResponseEntity<TeacherDTO> getTeacherById(@PathVariable("teacherId") Long teacherId) {
         return new ResponseEntity<>(teacherService.findById(teacherId), HttpStatus.OK);
     }
 

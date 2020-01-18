@@ -8,7 +8,7 @@ import java.util.List;
 public interface SubgroupService {
     void createSubgroup(SubgroupDTO subgroup );
 
-    void deleteSubgroup(int subgroupId);
+    void deleteSubgroup(Long subgroupId);
 
     void upgradeSubgroup(SubgroupDTO subgroup);
 

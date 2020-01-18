@@ -30,7 +30,7 @@ public class ChangeController {
     }
 
     @PostMapping("/deleteChange/{changeId}")
-    public ResponseEntity<String> deleteChange(@PathVariable("changeId") int changeId) {
+    public ResponseEntity<String> deleteChange(@PathVariable("changeId") Long changeId) {
         changeService.deleteChange(changeId);
         return ResponseEntity.ok("Change deleted");
     }

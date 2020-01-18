@@ -33,7 +33,7 @@ public class StudentController {
     }
 
     @PostMapping("/deleteStudent/{userId}")
-    public ResponseEntity<String> deleteUser(@PathVariable("userId") int userId) {
+    public ResponseEntity<String> deleteUser(@PathVariable("userId") Long userId) {
         studentService.deleteStudent(userId);
         return ResponseEntity.ok("Student deleted");
     }

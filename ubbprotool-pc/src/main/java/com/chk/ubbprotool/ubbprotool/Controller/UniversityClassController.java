@@ -33,9 +33,9 @@ public class UniversityClassController {
         return ResponseEntity.ok("UniversityClass saved");
     }
 
-    @PostMapping("/deleteUniversityClass")
-    public ResponseEntity<String> deleteUniversityClass(@RequestParam("UserId") int theId) {
-        universityClassService.deleteUniversityClass(theId);
+    @PostMapping("/deleteUniversityClass/{userId}")
+    public ResponseEntity<String> deleteUniversityClass(@PathVariable("userId") int userId) {
+        universityClassService.deleteUniversityClass(userId);
         return ResponseEntity.ok("UniversityClass deleted");
     }
 
@@ -45,17 +45,17 @@ public class UniversityClassController {
         return ResponseEntity.ok("UniversityClass updated");
     }
 
-    @PostMapping("/getScheduleStudent")
-    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@RequestParam("StudentId") Long studentId , @RequestParam("Date")String curentDate)
+    @PostMapping("/getScheduleStudent/{studentId}/{date}")
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@PathVariable("studentId") Long studentId , @PathVariable("date")String date)
     {
-        Date currentDate=Date.valueOf(curentDate);//converting string into sql date
+        Date currentDate=Date.valueOf(date);//converting string into sql date
        return ResponseEntity.ok(universityClassService.getClassesForStudent(studentId, currentDate));
     }
 
-    @PostMapping("/getScheduleTeacher")
-    public ResponseEntity<List<UniversityClassDTO>> getClassesForTeacher(@RequestParam("TeacherId") int teacherId , @RequestParam("Date")String curentDate)
+    @PostMapping("/getScheduleTeacher/{teacherId}/{date}")
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForTeacher(@PathVariable("teacherId") Long teacherId , @PathVariable("date")String date)
     {
-        Date currentDate=Date.valueOf(curentDate);//converting string into sql date
+        Date currentDate=Date.valueOf(date);//converting string into sql date
         return ResponseEntity.ok(universityClassService.getClassesForTeacher(teacherId, currentDate));
     }
 

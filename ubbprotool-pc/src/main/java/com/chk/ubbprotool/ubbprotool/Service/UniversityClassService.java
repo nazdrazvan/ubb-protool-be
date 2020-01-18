@@ -23,6 +23,6 @@ public interface UniversityClassService {
 
     List<UniversityClassDTO> getClassesForStudent(Long studentDTO, Date currentDate);
 
-    List<UniversityClassDTO> getClassesForTeacher(int teacherDTO, Date currentDate);
+    List<UniversityClassDTO> getClassesForTeacher(Long teacherDTO, Date currentDate);
 
 }

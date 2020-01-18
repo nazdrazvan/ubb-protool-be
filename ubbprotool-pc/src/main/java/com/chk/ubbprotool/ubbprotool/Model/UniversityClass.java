@@ -16,7 +16,7 @@ public class UniversityClass {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="class_id")
-    private int classId;
+    private Long classId;
 
     @Column(name="type") @NonNull
     private String classType;

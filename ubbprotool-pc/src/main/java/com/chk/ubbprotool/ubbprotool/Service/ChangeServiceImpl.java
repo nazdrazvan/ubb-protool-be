@@ -35,7 +35,7 @@ public class ChangeServiceImpl implements ChangeService {
 
     @Override
     @Transactional
-    public void deleteChange(int changeId) {
+    public void deleteChange(Long changeId) {
         changeRepository.removeData(changeId);
     }
 
@@ -78,7 +78,7 @@ public class ChangeServiceImpl implements ChangeService {
 
     @Override
     @Transactional
-    public ChangeDTO findById(int id) {
+    public ChangeDTO findById(Long id) {
         Change change = changeRepository.findById(id);
         return changeMapper.toDTO(change);
     }
