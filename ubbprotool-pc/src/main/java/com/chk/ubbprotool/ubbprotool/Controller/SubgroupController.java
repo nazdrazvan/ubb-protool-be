@@ -3,6 +3,7 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 import com.chk.ubbprotool.ubbprotool.Service.SubgroupService;
 import com.chk.ubbprotool.ubbprotool.dto.SubgroupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,4 +40,10 @@ public class SubgroupController {
         subgroupService.upgradeSubgroup(theSubgroup);
         return ResponseEntity.ok("Subgroup updated");
     }
+
+    @GetMapping("/get-by-id/{subgroupId}")
+    public ResponseEntity<SubgroupDTO> getStudentById(@PathVariable("subgroupId") Long subgroupId) throws IOException {
+        return new ResponseEntity<>(subgroupService.findById(subgroupId), HttpStatus.OK);
+    }
+
 }
