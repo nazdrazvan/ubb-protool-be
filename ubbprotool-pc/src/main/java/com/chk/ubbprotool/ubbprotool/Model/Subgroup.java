@@ -17,13 +17,13 @@ public class Subgroup {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="subgroup_id")
-    private int subgroupId;
+    private Long subgroupId;
 
     @Column(name="group_number") @NonNull
-    private int groupNumber;
+    private Integer groupNumber;
 
     @Column(name="subgroup_number") @NonNull
-    private int subgroupNumber;
+    private Integer subgroupNumber;
 
     @OneToMany(mappedBy = "subgroup")
     List<Student> students;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/class")
@@ -44,16 +45,22 @@ public class UniversityClassController {
         return ResponseEntity.ok("UniversityClass updated");
     }
 
-    @PostMapping("/getSchedule")
-    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@RequestParam("StudentId") int studentId , @RequestParam("Date")String curentDate)
+    @PostMapping("/getScheduleStudent")
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@RequestParam("StudentId") Long studentId , @RequestParam("Date")String curentDate)
     {
         Date currentDate=Date.valueOf(curentDate);//converting string into sql date
        return ResponseEntity.ok(universityClassService.getClassesForStudent(studentId, currentDate));
     }
 
     @GetMapping("/getAllStudentsByClassId")
-    public ResponseEntity<List<StudentDTO>> studentClasses(@RequestParam("ClassId") int classId ) {
-        return  ResponseEntity.ok(universityClassService.findAllStudentsByClassId(classId));
+    public ResponseEntity<List<StudentDTO>> studentClasses(@RequestParam("ClassId") Long classId ) {
+        return ResponseEntity.ok(universityClassService.findAllStudentsByClassId(classId));
     }
+    @PostMapping("/getScheduleTeacher")
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForTeacher(@RequestParam("TeacherId") int teacherId , @RequestParam("Date")String curentDate)
+    {
+        Date currentDate=Date.valueOf(curentDate);//converting string into sql date
+        return ResponseEntity.ok(universityClassService.getClassesForTeacher(teacherId, currentDate));
 
+    }
 }

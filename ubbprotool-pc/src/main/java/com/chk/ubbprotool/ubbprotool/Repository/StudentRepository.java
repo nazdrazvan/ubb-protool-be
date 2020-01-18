@@ -51,7 +51,7 @@ public class StudentRepository  {
     }
 
 
-    public Student findById(int theId) {
+    public Student findById(Long theId) {
         try {
             Session currentSession = sessionFactory.getCurrentSession();
             return currentSession.get(Student.class, theId);

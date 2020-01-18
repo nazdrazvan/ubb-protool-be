@@ -6,13 +6,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.stereotype.Component;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Component
 @JsonComponent
-public class StudentDTO {
+public class StudentForRegisterDTO {
 
     private Long studentId;
     private String firstName;
@@ -22,6 +21,6 @@ public class StudentDTO {
     private String major;
     private String university;
     private String faculty;
-    private Long subgroupId;
-
+    private Integer studentGroup;
+    private Integer studentSubGroup;
 }
