@@ -6,18 +6,21 @@ import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import com.chk.ubbprotool.ubbprotool.Repository.*;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
+import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
+import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
+import com.chk.ubbprotool.ubbprotool.Repository.UniversityClassRepository;
+import com.chk.ubbprotool.ubbprotool.Repository.WeeksRepository;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
+import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import com.chk.ubbprotool.ubbprotool.mapper.UniversityClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Component
 @ComponentScan(basePackages = "com.chk.ubbprotool.ubbprotool")
@@ -37,6 +40,9 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Autowired
     private UniversityClassMapper universityClassMapper;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Autowired
     private WeeksRepository weeksRepository;
@@ -76,14 +82,14 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Override
     @Transactional
-    public UniversityClassDTO findById(int id) {
+    public UniversityClassDTO findById(Long id) {
         UniversityClass universityClass = universityClassRepository.findById(id);
         return universityClassMapper.toDTO(universityClass);
     }
 
     @Override
     @Transactional
-    public List<UniversityClassDTO> getClassesForStudent(int studentId, Date date) {
+    public List<UniversityClassDTO> getClassesForStudent(Long studentId, Date date) {
 
         Student student = studentRepository.findById(studentId);
 
@@ -106,7 +112,7 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Override
     @Transactional
-    public List<UniversityClassDTO> getClassesForTeacher(int teacherId, Date date) {
+    public List<UniversityClassDTO> getClassesForTeacher(Long teacherId, Date date) {
 
         Teacher teacher = teacherRepository.findById(teacherId);
 
@@ -123,6 +129,24 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         }
         return dtoList;
     }
+
+    @Override
+    @Transactional
+    public List<StudentDTO> findAllStudentsByClassId(Long classId){
+        List<StudentDTO> studentDTOList = new ArrayList<StudentDTO>();
+
+        UniversityClass universityClass = universityClassRepository.findById(classId);
+        Subgroup subgroup = universityClass.getSubgroup();
+        List<Student> students = subgroup.getStudents();
+
+        for (Student student : students) {
+            StudentDTO studentDTO = studentMapper.toDTO(student);
+            studentDTOList.add(studentDTO);
+        }
+        if(studentDTOList.size()==0){return null;}
+        return studentDTOList;
+    }
+
 
     @Override
     @Transactional

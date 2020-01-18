@@ -19,11 +19,13 @@ public interface UniversityClassService {
 
     List<UniversityClassDTO> findAllUniversityClasses();
 
-    UniversityClassDTO findById(int id);
+    UniversityClassDTO findById(Long id);
 
-    List<UniversityClassDTO> getClassesForStudent(int studentDTO, Date currentDate);
+    List<UniversityClassDTO> getClassesForStudent(Long studentDTO, Date currentDate);
 
-    List<UniversityClassDTO> getClassesForTeacher(int teacherDTO, Date currentDate);
+    List<UniversityClassDTO> getClassesForTeacher(Long teacherDTO, Date currentDate);
+
+    List<StudentDTO> findAllStudentsByClassId(Long classId);
 
     List<UniversityClassDTO> getPossibleClassesToBeChanged(int classId, Date currentDate);
 

@@ -9,12 +9,12 @@ import java.util.List;
 public interface CourseService {
     void createCourse(CourseDTO course );
 
-    void deleteCourse(int courseId);
+    void deleteCourse(Long courseId);
 
     void upgradeCourse(CourseDTO course);
 
     List<CourseDTO> findAllCourses();
 
-    CourseDTO findById(int id);
+    CourseDTO findById(Long id);
 
 }

@@ -28,9 +28,9 @@ public class CourseController {
         return ResponseEntity.ok("Course saved");
     }
 
-    @PostMapping("/deleteCourse")
-    public ResponseEntity<String> deleteCourse(@RequestParam("CourseId") int theId) {
-        courseService.deleteCourse(theId);
+    @PostMapping("/deleteCourse/{courseId}")
+    public ResponseEntity<String> deleteCourse(@PathVariable("courseId") Long courseId) {
+        courseService.deleteCourse(courseId);
         return ResponseEntity.ok("Course deleted");
     }
 

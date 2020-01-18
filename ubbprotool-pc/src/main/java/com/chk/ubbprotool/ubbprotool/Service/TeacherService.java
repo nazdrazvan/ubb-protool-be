@@ -17,7 +17,7 @@ public interface TeacherService {
 
     List<TeacherDTO> findAllTeachers();
 
-    TeacherDTO findById(int id);
+    TeacherDTO findById(Long id);
 
     TeacherDTO findTeacherByEmailAndPassword(String email, String password);
 

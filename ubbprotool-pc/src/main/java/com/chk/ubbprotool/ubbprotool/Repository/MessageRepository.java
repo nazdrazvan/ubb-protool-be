@@ -31,7 +31,7 @@ public class MessageRepository {
     }
 
 
-    public void removeData(int id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Message message = session.byId(Message.class).load(id);session.delete(message);
         session.flush();
@@ -51,7 +51,7 @@ public class MessageRepository {
     }
 
 
-    public Message findById(int theId) {
+    public Message findById(Long theId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(Message.class, theId);
     }

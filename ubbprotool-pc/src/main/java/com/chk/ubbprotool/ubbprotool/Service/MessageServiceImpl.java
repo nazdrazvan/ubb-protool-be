@@ -30,7 +30,7 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     @Transactional
-    public void deleteMessage(int messageId) {
+    public void deleteMessage(Long messageId) {
         messageRepository.removeData(messageId);
     }
 
@@ -57,7 +57,7 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     @Transactional
-    public MessageDTO findById(int id) {
+    public MessageDTO findById(Long id) {
         Message message = messageRepository.findById(id);
         return messageMapper.toDTO(message);
     }

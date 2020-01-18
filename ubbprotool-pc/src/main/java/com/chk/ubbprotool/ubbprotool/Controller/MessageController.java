@@ -28,8 +28,8 @@ public class MessageController {
         return ResponseEntity.ok("Message saved");
     }
 
-    @PostMapping("/deleteMessage")
-    public ResponseEntity<String> deleteMessage(@RequestParam("MessageId") int theId) {
+    @PostMapping("/deleteMessage/{messageId}")
+    public ResponseEntity<String> deleteMessage(@PathVariable("messageId") Long theId) {
         messageService.deleteMessage(theId);
         return ResponseEntity.ok("Message deleted");
     }

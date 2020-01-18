@@ -8,11 +8,13 @@ import java.util.List;
 public interface SubgroupService {
     void createSubgroup(SubgroupDTO subgroup );
 
-    void deleteSubgroup(int subgroupId);
+    void deleteSubgroup(Long subgroupId);
 
     void upgradeSubgroup(SubgroupDTO subgroup);
 
     List<SubgroupDTO> findAllSubgroups();
 
-    SubgroupDTO findById(int id);
+    SubgroupDTO findById(Long id);
+
+    SubgroupDTO findByGroupAndSubgroup(Integer group, Integer subgroup);
 }

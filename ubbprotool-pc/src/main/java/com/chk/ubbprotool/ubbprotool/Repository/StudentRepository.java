@@ -31,7 +31,7 @@ public class StudentRepository  {
     }
 
 
-    public void removeData(int id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Student Student = session.byId(Student.class).load(id);session.delete(Student);
         session.flush();
@@ -51,7 +51,7 @@ public class StudentRepository  {
     }
 
 
-    public Student findById(int theId) {
+    public Student findById(Long theId) {
         try {
             Session currentSession = sessionFactory.getCurrentSession();
             return currentSession.get(Student.class, theId);

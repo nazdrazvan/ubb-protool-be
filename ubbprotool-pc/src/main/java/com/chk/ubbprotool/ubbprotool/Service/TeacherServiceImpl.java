@@ -56,7 +56,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     @Transactional
-    public TeacherDTO findById(int id) {
+    public TeacherDTO findById(Long id) {
         Teacher teacher = teacherRepository.findById(id);
         if (teacher == null){
             return null;

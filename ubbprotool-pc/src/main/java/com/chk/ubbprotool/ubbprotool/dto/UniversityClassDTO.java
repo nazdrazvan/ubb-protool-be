@@ -1,19 +1,10 @@
 package com.chk.ubbprotool.ubbprotool.dto;
 
-import com.chk.ubbprotool.ubbprotool.Model.Course;
-import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
-import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.stereotype.Component;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.sql.Time;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +13,7 @@ import java.sql.Time;
 @JsonComponent
 public class UniversityClassDTO {
 
-    int classId;
+    Long classId;
 
     private String classType;
 
@@ -36,9 +27,9 @@ public class UniversityClassDTO {
 
     private int classDuration;
 
-    private int teacherId;
+    private Long teacherId;
 
-    private int courseId;
+    private Long courseId;
 
-    private int subgroupId;
+    private Long subgroupId;
 }
