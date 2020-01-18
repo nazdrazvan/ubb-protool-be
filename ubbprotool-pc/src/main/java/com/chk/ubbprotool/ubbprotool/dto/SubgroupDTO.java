@@ -20,7 +20,7 @@ import java.util.Set;
 @JsonComponent
 public class SubgroupDTO {
 
-    private int subgroupId;
+    private Long subgroupId;
     private int groupNumber;
     private int subgroupNumber;
 

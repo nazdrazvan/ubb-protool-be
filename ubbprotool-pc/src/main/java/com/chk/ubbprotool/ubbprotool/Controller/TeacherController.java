@@ -29,9 +29,9 @@ public class TeacherController {
         return ResponseEntity.ok("Teacher saved");
     }
 
-    @PostMapping("/deleteTeacher")
-    public ResponseEntity<String> deleteTeacher(@RequestParam("TeacherId") int theId) {
-        teacherService.deleteTeacher(theId);
+    @PostMapping("/deleteTeacher/{teacherId}")
+    public ResponseEntity<String> deleteTeacher(@RequestParam("teacherId") int teacherId) {
+        teacherService.deleteTeacher(teacherId);
         return ResponseEntity.ok("Teacher deleted");
     }
 

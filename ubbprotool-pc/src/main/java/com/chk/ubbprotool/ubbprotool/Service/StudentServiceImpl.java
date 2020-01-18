@@ -1,15 +1,16 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
-import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
+import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
+import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
-import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentForRegisterDTO;
+import com.chk.ubbprotool.ubbprotool.mapper.StudentForRegisterMapper;
 import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -21,21 +22,28 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private SubgroupRepository subgroupRepository;
 
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private StudentForRegisterMapper studentforRegisterMapper;
+
 
     @Override
     @Transactional
-    public void createStudent(StudentDTO student) {
-        Student stud = studentMapper.toEntity(student);
+    public void createStudent(StudentForRegisterDTO student) throws Exception {
+        Student stud = studentforRegisterMapper.toEntity(student);
+        if (stud.getSubgroup() == null)
+            throw new Exception("The group does not exist!");
         studentRepository.saveData(stud);
     }
 
     @Override
     @Transactional
     public void deleteStudent(int studentId) {
-     studentRepository.removeData(studentId);
+        studentRepository.removeData(studentId);
     }
 
     @Override
@@ -51,9 +59,8 @@ public class StudentServiceImpl implements StudentService {
         //List<Student> students =  studentRepository.findAll();
         List<StudentDTO> studentDTOList = new ArrayList<StudentDTO>();
 
-        for (Student stud : studentRepository.findAll() )
-        {
-            StudentDTO studDTO = studentMapper.toDTO(stud) ;
+        for (Student stud : studentRepository.findAll()) {
+            StudentDTO studDTO = studentMapper.toDTO(stud);
             studentDTOList.add(studDTO);
         }
 
@@ -62,7 +69,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public StudentDTO findById(int id) {
+    public StudentDTO findById(Long id) {
         Student student = studentRepository.findById(id);
         if (student == null) {
             return null;
@@ -74,7 +81,7 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public StudentDTO findStudentByEmailAndPassword(String email, String password) {
         Student student = studentRepository.findByEmailAndPassword(email, password);
-        if (student == null){
+        if (student == null) {
             return null;
         }
         return studentMapper.toDTO(student);

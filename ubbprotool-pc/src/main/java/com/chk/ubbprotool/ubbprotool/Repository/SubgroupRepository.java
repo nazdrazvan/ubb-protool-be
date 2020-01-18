@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -30,9 +31,10 @@ public class SubgroupRepository {
     }
 
 
-    public void removeData(int id) {
+    public void removeData(Integer id) {
         Session session = sessionFactory.getCurrentSession();
-        Subgroup subgroup = session.byId(Subgroup.class).load(id);session.delete(subgroup);
+        Subgroup subgroup = session.byId(Subgroup.class).load(id);
+        session.delete(subgroup);
         session.flush();
         session.clear();
     }
@@ -50,8 +52,22 @@ public class SubgroupRepository {
     }
 
 
-    public Subgroup findById(int theId) {
+    public Subgroup findById(Long theId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(Subgroup.class, theId);
+    }
+
+    public Subgroup findByGroupAndSubgroup(Integer groupNumber, Integer subgroupNumber) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query hql = currentSession.createQuery("from Subgroup s where s.groupNumber = :groupNumber and s.subgroupNumber = :subgroupNumber")
+                .setParameter("groupNumber", groupNumber)
+                .setParameter("subgroupNumber", subgroupNumber);
+        Subgroup foundGroup = null;
+        try {
+            foundGroup = (Subgroup) hql.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+        return foundGroup;
     }
 }

@@ -3,7 +3,6 @@ package com.chk.ubbprotool.ubbprotool.Model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -17,7 +16,7 @@ public class UniversityClass {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="class_id")
-    private int classId;
+    private Long classId;
 
     @Column(name="type") @NonNull
     private String classType;

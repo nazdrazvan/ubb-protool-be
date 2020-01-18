@@ -2,6 +2,7 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Service.StudentService;
+import com.chk.ubbprotool.ubbprotool.dto.StudentForRegisterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -26,14 +27,14 @@ public class StudentController {
 
 
     @PostMapping("/saveStudent")
-    public ResponseEntity<String> saveUser(@RequestBody StudentDTO theStudent) throws IOException {
+    public ResponseEntity<String> saveUser(@RequestBody StudentForRegisterDTO theStudent) throws Exception {
         studentService.createStudent(theStudent);
         return ResponseEntity.ok("Student saved");
     }
 
-    @PostMapping("/deleteStudent")
-    public ResponseEntity<String> deleteUser(@RequestParam("UserId") int theId) {
-        studentService.deleteStudent(theId);
+    @PostMapping("/deleteStudent/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable("userId") int userId) {
+        studentService.deleteStudent(userId);
         return ResponseEntity.ok("Student deleted");
     }
 
@@ -44,7 +45,7 @@ public class StudentController {
     }
 
     @GetMapping("/get-by-id/{student_id}")
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("student_id") int student_id) throws IOException {
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("student_id") Long student_id) throws IOException {
         return new ResponseEntity<>(studentService.findById(student_id), HttpStatus.OK);
     }
 }
