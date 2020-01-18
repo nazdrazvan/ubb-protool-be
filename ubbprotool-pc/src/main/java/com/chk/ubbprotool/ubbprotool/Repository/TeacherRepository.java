@@ -51,8 +51,13 @@ public class TeacherRepository {
 
 
     public Teacher findById(int theId) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(Teacher.class, theId);
+        try {
+            Session currentSession = sessionFactory.getCurrentSession();
+            return currentSession.get(Teacher.class, theId);
+        }catch (Error e){
+            return null;
+        }
+
     }
 
     public Teacher findByEmailAndPassword(String email, String password){

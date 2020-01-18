@@ -58,6 +58,9 @@ public class TeacherServiceImpl implements TeacherService {
     @Transactional
     public TeacherDTO findById(int id) {
         Teacher teacher = teacherRepository.findById(id);
+        if (teacher == null){
+            return null;
+        }
         return teacherMapper.toDTO(teacher);
     }
 
