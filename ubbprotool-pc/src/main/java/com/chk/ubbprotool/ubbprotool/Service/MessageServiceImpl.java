@@ -74,8 +74,8 @@ public class MessageServiceImpl implements MessageService{
             Change change = message.getChange();
             UniversityClass universityClass = change.getUniversityClass();
             Teacher teacher = universityClass.getTeacher();
-            int id = teacher.getTeacherId();
-            if (id == teacherId) {
+            Long id = teacher.getTeacherId();
+            if (id.equals(teacherId)) {
                 MessageDTO messageDTO = messageMapper.toDTO(message);
                 messageDTOList.add(messageDTO);
             }
