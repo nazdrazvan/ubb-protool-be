@@ -97,7 +97,7 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         {
             int currentWeek = weeksRepository.findByDate(date);
 
-            if(clasa.getClassWeek() == 0 || clasa.getClassWeek() == currentWeek % 2)
+            if(clasa.getClassWeek() == 0 || clasa.getClassWeek()%2 == currentWeek % 2)
             dtoList.add(universityClassMapper.toDTO(clasa));
         }
 
@@ -118,9 +118,45 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         {
             int currentWeek = weeksRepository.findByDate(date);
 
-            if(clasa.getClassWeek() == 0 || clasa.getClassWeek() == currentWeek % 2)
+            if(clasa.getClassWeek() == 0 || clasa.getClassWeek()%2 == currentWeek % 2)
                 dtoList.add(universityClassMapper.toDTO(clasa));
         }
         return dtoList;
+    }
+
+    @Override
+    @Transactional
+    public List<UniversityClassDTO> getPossibleClassesToBeChanged(int classId, Date currentDate) {
+        List<UniversityClassDTO> classes = new ArrayList<>();
+
+        String type = this.findById(classId).getClassType();
+        int courseId = this.findById(classId).getCourseId();
+        int currentWeek = weeksRepository.findByDate(currentDate);
+        int week = 0;
+        if(currentWeek % 2 == 0)
+        {
+            week = 2;
+        }
+        else if(currentWeek % 2 == 1) {
+            week = 1;
+        }
+
+        if(week == 2)
+        {
+            for(UniversityClassDTO clasa: this.findAllUniversityClasses())
+            {
+                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && (clasa.getClassWeek() == 2 || clasa.getClassWeek() == 0))
+                    classes.add(clasa);
+            }
+        }
+        else if(week == 1){
+            for(UniversityClassDTO clasa: this.findAllUniversityClasses())
+            {
+                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId)
+                    classes.add(clasa);
+            }
+        }
+
+        return classes;
     }
 }

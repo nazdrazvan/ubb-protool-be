@@ -25,4 +25,6 @@ public interface UniversityClassService {
 
     List<UniversityClassDTO> getClassesForTeacher(int teacherDTO, Date currentDate);
 
+    List<UniversityClassDTO> getPossibleClassesToBeChanged(int classId, Date currentDate);
+
 }
