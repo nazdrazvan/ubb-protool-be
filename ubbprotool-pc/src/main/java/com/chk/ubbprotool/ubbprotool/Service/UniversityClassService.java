@@ -27,6 +27,6 @@ public interface UniversityClassService {
 
     List<StudentDTO> findAllStudentsByClassId(Long classId);
 
-    List<UniversityClassDTO> getPossibleClassesToBeChanged(int classId, Date currentDate);
+    List<UniversityClassDTO> getPossibleClassesToBeChanged(Long classId, Date currentDate);
 
 }

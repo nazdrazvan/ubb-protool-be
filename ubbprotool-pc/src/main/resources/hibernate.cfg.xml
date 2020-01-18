@@ -6,9 +6,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/ubbprotool</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:1234/ubbprotool</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.password">parola</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <mapping class="com.chk.ubbprotool.ubbprotool.Model.Student"></mapping>
         <mapping class="com.chk.ubbprotool.ubbprotool.Model.Teacher"></mapping>

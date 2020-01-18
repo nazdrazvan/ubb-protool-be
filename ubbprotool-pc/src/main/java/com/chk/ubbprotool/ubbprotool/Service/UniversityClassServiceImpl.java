@@ -150,11 +150,11 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Override
     @Transactional
-    public List<UniversityClassDTO> getPossibleClassesToBeChanged(int classId, Date currentDate) {
+    public List<UniversityClassDTO> getPossibleClassesToBeChanged(Long classId, Date currentDate) {
         List<UniversityClassDTO> classes = new ArrayList<>();
 
         String type = this.findById(classId).getClassType();
-        int courseId = this.findById(classId).getCourseId();
+        Long courseId = this.findById(classId).getCourseId();
         int currentWeek = weeksRepository.findByDate(currentDate);
         int week = 0;
         if(currentWeek % 2 == 0)
