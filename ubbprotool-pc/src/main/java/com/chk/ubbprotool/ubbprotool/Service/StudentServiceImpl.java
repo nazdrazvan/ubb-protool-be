@@ -1,8 +1,10 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
+import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
+import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
 import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -77,4 +79,5 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentMapper.toDTO(student);
     }
+
 }

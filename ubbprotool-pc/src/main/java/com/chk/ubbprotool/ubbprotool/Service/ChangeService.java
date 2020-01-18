@@ -20,6 +20,4 @@ public interface ChangeService {
 
     ChangeDTO findById(int id);
 
-
-
 }

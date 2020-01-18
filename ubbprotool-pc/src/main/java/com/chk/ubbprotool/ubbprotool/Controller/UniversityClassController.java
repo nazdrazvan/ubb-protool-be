@@ -51,4 +51,8 @@ public class UniversityClassController {
        return ResponseEntity.ok(universityClassService.getClassesForStudent(studentId, currentDate));
     }
 
+    @GetMapping("/getAllStudentsByClassId")
+    public ResponseEntity<List<StudentDTO>> studentClasses(@RequestParam("ClassId") int classId ) {
+        return  ResponseEntity.ok(universityClassService.findAllStudentsByClassId(classId));
+    }
 }
