@@ -6,20 +6,15 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.stereotype.Component;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Component
 @JsonComponent
-public class StudentDTO {
-    private Long studentId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private String major;
-    private String university;
-    private String faculty;
-    private Long subgroupId;
+public class TeacherForEditDTO {
+    private Long teacherId;
+    private Boolean teacherAvailability;
+    private String teacherFirstName;
+    private String teacherLastName;
+    private String teacherWebSite;
 }

@@ -31,7 +31,7 @@ public class StudentRepository  {
     }
 
 
-    public void removeData(int id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Student Student = session.byId(Student.class).load(id);session.delete(Student);
         session.flush();

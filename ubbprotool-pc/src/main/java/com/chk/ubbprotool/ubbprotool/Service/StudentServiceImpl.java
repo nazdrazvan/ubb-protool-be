@@ -1,12 +1,13 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
-import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
 import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
 import com.chk.ubbprotool.ubbprotool.dto.StudentForRegisterDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentForEditDTO;
 import com.chk.ubbprotool.ubbprotool.mapper.StudentForRegisterMapper;
+import com.chk.ubbprotool.ubbprotool.mapper.StudentForEditMapper;
 import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,12 +25,12 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
     @Autowired
     private SubgroupRepository subgroupRepository;
-
     @Autowired
     private StudentMapper studentMapper;
     @Autowired
     private StudentForRegisterMapper studentforRegisterMapper;
-
+    @Autowired
+    private StudentForEditMapper studentForEditMapper;
 
     @Override
     @Transactional
@@ -42,14 +43,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public void deleteStudent(int studentId) {
+    public void deleteStudent(Long studentId) {
         studentRepository.removeData(studentId);
     }
 
     @Override
     @Transactional
-    public void upgradeStudent(StudentDTO student) {
-        Student stud = studentMapper.toEntity(student);
+    public void updateStudent(StudentForEditDTO student) throws Exception {
+        if (subgroupRepository.findByGroupAndSubgroup(student.getStudentGroup(), student.getStudentSubGroup()) == null)
+            throw new Exception("The group does not exist!");
+        Student stud = studentForEditMapper.toEntity(student);
         studentRepository.updateData(stud);
     }
 

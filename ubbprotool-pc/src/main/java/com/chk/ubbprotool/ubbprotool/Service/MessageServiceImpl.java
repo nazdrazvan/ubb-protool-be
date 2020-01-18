@@ -33,7 +33,7 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     @Transactional
-    public void deleteMessage(int messageId) {
+    public void deleteMessage(Long messageId) {
         messageRepository.removeData(messageId);
     }
 
@@ -60,7 +60,7 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     @Transactional
-    public MessageDTO findById(int id) {
+    public MessageDTO findById(Long id) {
         Message message = messageRepository.findById(id);
         return messageMapper.toDTO(message);
     }
@@ -70,18 +70,16 @@ public class MessageServiceImpl implements MessageService{
     public List<MessageDTO> findAllMessagesByTeacherId(Long teacherId) {
         List<MessageDTO> messageDTOList = new ArrayList<MessageDTO>();
 
-        for (Message message : messageRepository.findAll() )
-        {   Change change = message.getChange();
+        for (Message message : messageRepository.findAll()) {
+            Change change = message.getChange();
             UniversityClass universityClass = change.getUniversityClass();
             Teacher teacher = universityClass.getTeacher();
-            int id = teacher.getTeacherId();
-            if(id == teacherId){
-                MessageDTO messageDTO = messageMapper.toDTO(message) ;
+            Long id = teacher.getTeacherId();
+            if (id.equals(teacherId)) {
+                MessageDTO messageDTO = messageMapper.toDTO(message);
                 messageDTOList.add(messageDTO);
             }
         }
-
-        return messageDTOList;
-
-    }
+            return messageDTOList;
+        }
 }

@@ -31,7 +31,7 @@ public class SubgroupRepository {
     }
 
 
-    public void removeData(Integer id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Subgroup subgroup = session.byId(Subgroup.class).load(id);
         session.delete(subgroup);

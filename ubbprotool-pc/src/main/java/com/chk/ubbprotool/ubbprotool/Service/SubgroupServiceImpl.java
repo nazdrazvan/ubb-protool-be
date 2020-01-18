@@ -31,7 +31,7 @@ public class SubgroupServiceImpl implements SubgroupService {
 
     @Override
     @Transactional
-    public void deleteSubgroup(int subgroupId) {
+    public void deleteSubgroup(Long subgroupId) {
         subgroupRepository.removeData(subgroupId);
     }
 

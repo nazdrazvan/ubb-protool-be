@@ -3,6 +3,8 @@ package com.chk.ubbprotool.ubbprotool.Service;
 import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.Repository.TeacherRepository;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
+import com.chk.ubbprotool.ubbprotool.dto.TeacherForEditDTO;
+import com.chk.ubbprotool.ubbprotool.mapper.TeacherForEditMapper;
 import com.chk.ubbprotool.ubbprotool.mapper.TeacherMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,6 +23,8 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
     private TeacherMapper teacherMapper;
+    @Autowired
+    private TeacherForEditMapper teacherForEditMapper;
 
     @Override
     @Transactional
@@ -36,8 +40,8 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     @Transactional
-    public void upgradeTeacher(TeacherDTO teacher) {
-        teacherRepository.updateData(teacherMapper.toEntity(teacher));
+    public void editTeacher(TeacherForEditDTO teacher) {
+        teacherRepository.updateData(teacherForEditMapper.toEntity(teacher));
     }
 
     @Override
@@ -56,7 +60,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     @Transactional
-    public TeacherDTO findById(int id) {
+    public TeacherDTO findById(Long id) {
         Teacher teacher = teacherRepository.findById(id);
         if (teacher == null){
             return null;

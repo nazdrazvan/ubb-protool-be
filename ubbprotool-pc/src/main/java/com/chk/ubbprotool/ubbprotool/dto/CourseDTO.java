@@ -16,18 +16,11 @@ import java.sql.Date;
 @Component
 @JsonComponent
 public class CourseDTO {
-
-    private int courseId;
-
+    private Long courseId;
     private String courseName;
-
     private int courseSemester;
-
     private String courseUniversity;
-
     private String courseFaculty;
-
     private Date courseStartDate;
-
     private Date courseEndDate;
 }

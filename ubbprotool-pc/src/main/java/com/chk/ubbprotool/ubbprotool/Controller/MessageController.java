@@ -30,7 +30,7 @@ public class MessageController {
     }
 
     @PostMapping("/deleteMessage/{messageId}")
-    public ResponseEntity<String> deleteMessage(@PathVariable("messageId") int theId) {
+    public ResponseEntity<String> deleteMessage(@PathVariable("messageId") Long theId) {
         messageService.deleteMessage(theId);
         return ResponseEntity.ok("Message deleted");
     }
@@ -45,4 +45,5 @@ public class MessageController {
     public ResponseEntity<List<MessageDTO>> studentClasses(@RequestParam("TeacherId") Long teacherId ) {
         return ResponseEntity.ok(messageService.findAllMessagesByTeacherId(teacherId));
     }
+
 }

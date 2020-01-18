@@ -29,7 +29,7 @@ public class SubgroupController {
     }
 
     @PostMapping("/deleteSubgroup/{subgroupId}")
-    public ResponseEntity<String> deleteSubgroup(@PathVariable("subgroupId") int subgroupId) {
+    public ResponseEntity<String> deleteSubgroup(@PathVariable("subgroupId") Long subgroupId) {
         subgroupService.deleteSubgroup(subgroupId);
         return ResponseEntity.ok("Subgroup deleted");
     }
