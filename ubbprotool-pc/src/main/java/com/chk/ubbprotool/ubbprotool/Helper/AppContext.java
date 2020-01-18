@@ -28,14 +28,12 @@ public class AppContext {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] {
+        sessionFactory.setPackagesToScan(new String[]{
                 "com.chk.ubbprotool.ubbprotool.*"
         });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
-
-
 
 
     @Bean
@@ -45,6 +43,7 @@ public class AppContext {
         dataSource.setUrl("jdbc:mysql://127.0.0.1:1234/ubbprotool");
         dataSource.setUsername("root");
         dataSource.setPassword("parola");
+
         return dataSource;
     }
 
@@ -63,7 +62,6 @@ public class AppContext {
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
-
 
 
 }
