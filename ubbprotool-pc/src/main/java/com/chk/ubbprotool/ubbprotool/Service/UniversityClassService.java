@@ -18,7 +18,7 @@ public interface UniversityClassService {
 
     List<UniversityClassDTO> findAllUniversityClasses();
 
-    UniversityClassDTO findById(int id);
+    UniversityClassDTO findById(Long id);
 
-    List<UniversityClassDTO> getClassesForStudent(int studentDTO, Date currentDate);
+    List<UniversityClassDTO> getClassesForStudent(Long studentDTO, Date currentDate);
 }

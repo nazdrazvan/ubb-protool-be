@@ -45,7 +45,7 @@ public class UniversityClassController {
     }
 
     @PostMapping("/getSchedule")
-    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@RequestParam("StudentId") int studentId , @RequestParam("Date")String curentDate)
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@RequestParam("StudentId") Long studentId , @RequestParam("Date")String curentDate)
     {
         Date currentDate=Date.valueOf(curentDate);//converting string into sql date
        return ResponseEntity.ok(universityClassService.getClassesForStudent(studentId, currentDate));
