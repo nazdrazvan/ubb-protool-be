@@ -14,5 +14,7 @@ public interface SubgroupService {
 
     List<SubgroupDTO> findAllSubgroups();
 
-    SubgroupDTO findById(int id);
+    SubgroupDTO findById(Long id);
+
+    SubgroupDTO findByGroupAndSubgroup(Integer group, Integer subgroup);
 }

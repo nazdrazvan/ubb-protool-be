@@ -3,7 +3,6 @@ package com.chk.ubbprotool.ubbprotool.Model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Set;
 
 @AllArgsConstructor

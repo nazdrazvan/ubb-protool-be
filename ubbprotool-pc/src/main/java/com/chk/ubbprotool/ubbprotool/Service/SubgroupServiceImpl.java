@@ -57,8 +57,18 @@ public class SubgroupServiceImpl implements SubgroupService {
 
     @Override
     @Transactional
-    public SubgroupDTO findById(int id) {
+    public SubgroupDTO findById(Long id) {
         Subgroup subgroup = subgroupRepository.findById(id);
+        return subgroupMapper.toDTO(subgroup);
+    }
+
+    @Override
+    @Transactional
+    public SubgroupDTO findByGroupAndSubgroup(Integer group, Integer subGroup) {
+        Subgroup subgroup = subgroupRepository.findByGroupAndSubgroup(group, subGroup);
+        if (subgroup == null) {
+            return null;
+        }
         return subgroupMapper.toDTO(subgroup);
     }
 }
