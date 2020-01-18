@@ -29,10 +29,10 @@ public class TeacherRepository {
         return query.getResultList();
     }
 
-
-    public void removeData(int id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        Teacher Teacher = session.byId(Teacher.class).load(id);session.delete(Teacher);
+        Teacher Teacher = session.byId(Teacher.class).load(id);
+        session.delete(Teacher);
         session.flush();
         session.clear();
     }
@@ -43,29 +43,25 @@ public class TeacherRepository {
         session.update(object);
     }
 
-
     public void saveData(Teacher teacher) {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.save(teacher);
     }
 
-
     public Teacher findById(Long theId) {
         try {
             Session currentSession = sessionFactory.getCurrentSession();
             return currentSession.get(Teacher.class, theId);
-        }catch (Error e){
+        } catch (Error e) {
             return null;
         }
-
     }
 
-    public Teacher findByEmailAndPassword(String email, String password){
+    public Teacher findByEmailAndPassword(String email, String password) {
         Session session = sessionFactory.getCurrentSession();
         Query hql = session.createQuery("from Teacher t where t.email = :email and t.password = :password")
                 .setParameter("email", email)
                 .setParameter("password", password);
-
         Teacher foundTeach = null;
         try {
             foundTeach = (Teacher) hql.getSingleResult();
@@ -73,5 +69,29 @@ public class TeacherRepository {
             return null;
         }
         return foundTeach;
+    }
+
+    public int activateTeacher(Teacher teach) {
+        Session session = sessionFactory.getCurrentSession();
+        Query hql = session.createQuery("update Teacher t set t.teacherAvailability = :thesisAvailability," +
+                " t.teacherFirstName = :firstName, t.teacherLastName = :lastName, t.password = :password" +
+                ", t.teacherEnabled = :enable, t.teacherFaculty = :faculty, t.teacherUniversity = :university" +
+                ", t.teacherWebSite = :website where t.email = :email")
+                .setParameter("email", teach.getEmail())
+                .setParameter("thesisAvailability", teach.isTeacherAvailability())
+                .setParameter("firstName", teach.getTeacherFirstName())
+                .setParameter("lastName", teach.getTeacherLastName())
+                .setParameter("password", teach.getPassword())
+                .setParameter("enable", teach.isTeacherEnabled())
+                .setParameter("faculty", teach.getTeacherFaculty())
+                .setParameter("university", teach.getTeacherUniversity())
+                .setParameter("website", teach.getTeacherWebSite());
+        int result = 0;
+        try {
+            result = hql.executeUpdate();
+        } catch (NoResultException e) {
+            return result;
+        }
+        return result;
     }
 }

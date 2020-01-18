@@ -34,7 +34,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     @Transactional
-    public void deleteTeacher(int teacherId) {
+    public void deleteTeacher(Long teacherId) {
         teacherRepository.removeData(teacherId);
     }
 
@@ -49,9 +49,8 @@ public class TeacherServiceImpl implements TeacherService {
     public List<TeacherDTO> findAllTeachers() {
         List<TeacherDTO> teacherDTOList = new ArrayList<TeacherDTO>();
 
-        for (Teacher teacher : teacherRepository.findAll() )
-        {
-            TeacherDTO teacherDTO = teacherMapper.toDTO(teacher) ;
+        for (Teacher teacher : teacherRepository.findAll()) {
+            TeacherDTO teacherDTO = teacherMapper.toDTO(teacher);
             teacherDTOList.add(teacherDTO);
         }
 
@@ -62,7 +61,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Transactional
     public TeacherDTO findById(Long id) {
         Teacher teacher = teacherRepository.findById(id);
-        if (teacher == null){
+        if (teacher == null) {
             return null;
         }
         return teacherMapper.toDTO(teacher);
@@ -72,9 +71,19 @@ public class TeacherServiceImpl implements TeacherService {
     @Transactional
     public TeacherDTO findTeacherByEmailAndPassword(String email, String password) {
         Teacher teacher = teacherRepository.findByEmailAndPassword(email, password);
-        if (teacher == null){
+        if (teacher == null) {
             return null;
         }
         return teacherMapper.toDTO(teacher);
+    }
+
+    @Override
+    @Transactional
+    public void activateTeacher(TeacherDTO teach) throws Exception {
+        Teacher newTeacher = teacherMapper.toEntity(teach);
+        int result = teacherRepository.activateTeacher(newTeacher);
+        if (result == 0) {
+            throw new Exception("The teacher is not in the university system!");
+        }
     }
 }
