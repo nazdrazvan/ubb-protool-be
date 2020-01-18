@@ -15,7 +15,7 @@ import javax.persistence.Column;
 @Component
 @JsonComponent
 public class TeacherDTO {
-    private int teacherId;
+    private Long teacherId;
     private String teacherDepartment;
     private boolean teacherAvailability;
     private String teacherFirstName;

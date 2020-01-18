@@ -29,9 +29,9 @@ public class ChangeController {
         return ResponseEntity.ok("Change saved");
     }
 
-    @PostMapping("/deleteChange")
-    public ResponseEntity<String> deleteChange(@RequestParam("ChangeId") int theId) {
-        changeService.deleteChange(theId);
+    @PostMapping("/deleteChange/{changeId}")
+    public ResponseEntity<String> deleteChange(@PathVariable("changeId") Long changeId) {
+        changeService.deleteChange(changeId);
         return ResponseEntity.ok("Change deleted");
     }
 
@@ -39,6 +39,10 @@ public class ChangeController {
     public ResponseEntity<String> updateChange(@RequestBody ChangeDTO theChange) throws IOException {
         changeService.upgradeChange(theChange);
         return ResponseEntity.ok("Change updated");
+    }
+    @GetMapping("/get-changes-by-student-id/{studentId}")
+    public ResponseEntity<List<ChangeDTO>> getAllChangesOfAStudentById(@PathVariable("studentId") String studentId) throws Exception {
+        return new ResponseEntity<List<ChangeDTO>>(changeService.findAllChangesByStudentId(Long.parseLong(studentId)), HttpStatus.OK);
     }
 
 //    @GetMapping("/get-changes-by-student-id/{studentId}")

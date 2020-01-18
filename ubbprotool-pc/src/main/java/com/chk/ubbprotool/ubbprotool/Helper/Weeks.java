@@ -15,7 +15,7 @@ public class Weeks {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="week_id")
-    private int weekId;
+    private Long weekId;
 
     @Column(name="week_number") @NonNull
     private int weekNumber;

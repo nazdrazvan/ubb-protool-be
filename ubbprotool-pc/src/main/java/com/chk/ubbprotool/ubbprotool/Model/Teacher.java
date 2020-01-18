@@ -18,7 +18,7 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id")
-    private Integer teacherId;
+    private Long teacherId;
 
     @Column(name="department") @NonNull
     private String teacherDepartment;

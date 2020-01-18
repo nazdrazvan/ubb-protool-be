@@ -12,7 +12,7 @@ public interface StudentService {
 
      void createStudent(StudentForRegisterDTO student) throws Exception;
 
-     void deleteStudent(int studentId);
+     void deleteStudent(Long studentId);
 
      void updateStudent(StudentForEditDTO student) throws Exception;
 

@@ -30,7 +30,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public void deleteCourse(int courseId) {
+    public void deleteCourse(Long courseId) {
         courseRepository.removeData(courseId);
     }
 
@@ -56,7 +56,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public CourseDTO findById(int id) {
+    public CourseDTO findById(Long id) {
         return courseMapper.toDTO(courseRepository.findById(id));
     }
 

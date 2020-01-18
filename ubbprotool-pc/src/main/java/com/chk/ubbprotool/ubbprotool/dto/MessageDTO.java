@@ -18,9 +18,9 @@ import java.sql.Time;
 @Component
 @JsonComponent
 public class MessageDTO {
-    private int messageId;
+    private Long messageId;
     private Date messageDate;
     private Time messageTime;
     private String messageText;
-    private int changeId;
+    private Long changeId;
 }

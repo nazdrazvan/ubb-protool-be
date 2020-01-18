@@ -30,7 +30,7 @@ public class ChangeRepository {
     }
 
 
-    public void removeData(int id) {
+    public void removeData(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Change change = session.byId(Change.class).load(id);session.delete(change);
         session.flush();
@@ -50,7 +50,7 @@ public class ChangeRepository {
     }
 
 
-    public Change findById(int theId) {
+    public Change findById(Long theId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(Change.class, theId);
     }

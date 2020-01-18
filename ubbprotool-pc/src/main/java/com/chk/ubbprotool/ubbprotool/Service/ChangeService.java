@@ -10,7 +10,7 @@ public interface ChangeService {
 
     void createChange(ChangeDTO change );
 
-    void deleteChange(int changeId);
+    void deleteChange(Long changeId);
 
     void upgradeChange(ChangeDTO change);
 
@@ -18,7 +18,8 @@ public interface ChangeService {
     
 //    List<ChangeDTO> findAllChangesByStudentId(int studentId);
 
-    ChangeDTO findById(int id);
+    ChangeDTO findById(Long id);
+    List<ChangeDTO> findAllChangesByStudentId(Long studentId) throws Exception;
 
 
 

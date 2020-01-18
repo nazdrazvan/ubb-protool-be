@@ -32,9 +32,9 @@ public class StudentController {
         return ResponseEntity.ok("Student saved");
     }
 
-    @PostMapping("/deleteStudent")
-    public ResponseEntity<String> deleteUser(@RequestParam("UserId") int theId) {
-        studentService.deleteStudent(theId);
+    @PostMapping("/deleteStudent/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable("userId") Long userId) {
+        studentService.deleteStudent(userId);
         return ResponseEntity.ok("Student deleted");
     }
 
