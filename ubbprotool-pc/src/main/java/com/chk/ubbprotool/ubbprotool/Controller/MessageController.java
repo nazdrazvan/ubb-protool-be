@@ -41,7 +41,7 @@ public class MessageController {
         return ResponseEntity.ok("Message updated");
     }
 
-    @GetMapping("/findAllMessagesByTeacherId")
+    @GetMapping("/getAllMessagesByTeacherId")
     public ResponseEntity<List<MessageDTO>> studentClasses(@RequestParam("TeacherId") Long teacherId ) {
         return ResponseEntity.ok(messageService.findAllMessagesByTeacherId(teacherId));
     }
