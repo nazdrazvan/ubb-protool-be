@@ -19,7 +19,6 @@ public class MessageMapper {
 
         result.setMessageId(source.getMessageId());
         result.setMessageDate(source.getMessageDate());
-        result.setMessageTime(source.getMessageTime());
         result.setMessageText(source.getMessageText());
         result.setChangeId(source.getChange().getChangeId());
 
@@ -32,7 +31,6 @@ public class MessageMapper {
 
         result.setMessageId(source.getMessageId());
         result.setMessageDate(source.getMessageDate());
-        result.setMessageTime(source.getMessageTime());
         result.setMessageText(source.getMessageText());
         Change c = changeRepository.findById(source.getChangeId());
         result.setChange(c);
