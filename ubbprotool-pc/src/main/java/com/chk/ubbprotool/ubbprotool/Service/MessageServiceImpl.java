@@ -1,6 +1,9 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
+import com.chk.ubbprotool.ubbprotool.Model.Change;
 import com.chk.ubbprotool.ubbprotool.Model.Message;
+import com.chk.ubbprotool.ubbprotool.Model.Teacher;
+import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import com.chk.ubbprotool.ubbprotool.Repository.MessageRepository;
 import com.chk.ubbprotool.ubbprotool.dto.MessageDTO;
 import com.chk.ubbprotool.ubbprotool.mapper.MessageMapper;
@@ -61,4 +64,22 @@ public class MessageServiceImpl implements MessageService{
         Message message = messageRepository.findById(id);
         return messageMapper.toDTO(message);
     }
+
+    @Override
+    @Transactional
+    public List<MessageDTO> findAllMessagesByTeacherId(Long teacherId) {
+        List<MessageDTO> messageDTOList = new ArrayList<MessageDTO>();
+
+        for (Message message : messageRepository.findAll()) {
+            Change change = message.getChange();
+            UniversityClass universityClass = change.getUniversityClass();
+            Teacher teacher = universityClass.getTeacher();
+            int id = teacher.getTeacherId();
+            if (id == teacherId) {
+                MessageDTO messageDTO = messageMapper.toDTO(message);
+                messageDTOList.add(messageDTO);
+            }
+        }
+            return messageDTOList;
+        }
 }
