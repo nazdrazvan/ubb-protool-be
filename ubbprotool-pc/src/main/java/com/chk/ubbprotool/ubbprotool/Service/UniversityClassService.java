@@ -25,4 +25,6 @@ public interface UniversityClassService {
 
     List<UniversityClassDTO> getClassesForTeacher(Long teacherDTO, Date currentDate);
 
+    List<StudentDTO> findAllStudentsByClassId(Long classId);
+
 }

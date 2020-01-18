@@ -11,6 +11,7 @@ import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
 import com.chk.ubbprotool.ubbprotool.Repository.UniversityClassRepository;
 import com.chk.ubbprotool.ubbprotool.Repository.WeeksRepository;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
+import com.chk.ubbprotool.ubbprotool.mapper.StudentMapper;
 import com.chk.ubbprotool.ubbprotool.mapper.UniversityClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,6 +40,9 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Autowired
     private UniversityClassMapper universityClassMapper;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Autowired
     private WeeksRepository weeksRepository;
@@ -125,4 +129,22 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         }
         return dtoList;
     }
+
+    @Override
+    @Transactional
+    public List<StudentDTO> findAllStudentsByClassId(Long classId){
+        List<StudentDTO> studentDTOList = new ArrayList<StudentDTO>();
+
+        UniversityClass universityClass = universityClassRepository.findById(classId);
+        Subgroup subgroup = universityClass.getSubgroup();
+        List<Student> students = subgroup.getStudents();
+
+        for (Student student : students) {
+            StudentDTO studentDTO = studentMapper.toDTO(student);
+            studentDTOList.add(studentDTO);
+        }
+        if(studentDTOList.size()==0){return null;}
+        return studentDTOList;
+    }
+
 }
