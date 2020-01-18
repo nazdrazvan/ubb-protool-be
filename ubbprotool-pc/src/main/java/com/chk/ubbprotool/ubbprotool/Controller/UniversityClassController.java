@@ -59,4 +59,11 @@ public class UniversityClassController {
         return ResponseEntity.ok(universityClassService.getClassesForTeacher(teacherId, currentDate));
     }
 
+    @PostMapping("/getPosiibleClassesForChanged")
+    public ResponseEntity<List<UniversityClassDTO>> getPossibleClassesForChange(@RequestParam("classId") Long classId , @RequestParam("date")String curentDate)
+    {
+        Date currentDate=Date.valueOf(curentDate);//converting string into sql date
+        return ResponseEntity.ok(universityClassService.getPossibleClassesToBeChanged(classId, currentDate));
+    }
+
 }
