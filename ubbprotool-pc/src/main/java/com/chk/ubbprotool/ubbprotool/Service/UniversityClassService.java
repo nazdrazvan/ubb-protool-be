@@ -21,4 +21,6 @@ public interface UniversityClassService {
     UniversityClassDTO findById(int id);
 
     List<UniversityClassDTO> getClassesForStudent(int studentDTO, Date currentDate);
+
+    List<StudentDTO> findAllStudentsByClassId(int classId);
 }
