@@ -53,8 +53,14 @@ public class SubgroupRepository {
 
 
     public Subgroup findById(Long theId) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(Subgroup.class, theId);
+
+        try {
+            Session currentSession = sessionFactory.getCurrentSession();
+            return currentSession.get(Subgroup.class, theId);
+        }catch (Error e){
+            return null;
+        }
+
     }
 
     public Subgroup findByGroupAndSubgroup(Integer groupNumber, Integer subgroupNumber) {

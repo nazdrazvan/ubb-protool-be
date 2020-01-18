@@ -85,6 +85,9 @@ public class UniversityClassServiceImpl implements UniversityClassService{
     @Transactional
     public UniversityClassDTO findById(Long id) {
         UniversityClass universityClass = universityClassRepository.findById(id);
+        if (universityClass == null) {
+            return null;
+        }
         return universityClassMapper.toDTO(universityClass);
     }
 

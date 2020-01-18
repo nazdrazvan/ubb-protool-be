@@ -51,7 +51,12 @@ public class UniversityClassRepository {
 
 
     public UniversityClass findById(Long theId) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(UniversityClass.class, theId);
+        try {
+            Session currentSession = sessionFactory.getCurrentSession();
+            return currentSession.get(UniversityClass.class, theId);
+
+        }catch (Error e){
+            return null;
+        }
     }
 }
