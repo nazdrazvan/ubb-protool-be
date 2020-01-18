@@ -16,4 +16,6 @@ public interface MessageService {
     List<MessageDTO> findAllMessages();
 
     MessageDTO findById(Long id);
+    List<MessageDTO> findAllMessagesByTeacherId(Long teacherId);
+
 }
