@@ -8,6 +8,7 @@ import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -71,4 +72,8 @@ public class UniversityClassController {
         return ResponseEntity.ok(universityClassService.getPossibleClassesToBeChanged(classId, currentDate));
     }
 
+    @GetMapping("/get-by-id/{classId}")
+    public ResponseEntity<UniversityClassDTO> getStudentById(@PathVariable("classId") Long classId) throws IOException {
+        return new ResponseEntity<>(universityClassService.findById(classId), HttpStatus.OK);
+    }
 }
