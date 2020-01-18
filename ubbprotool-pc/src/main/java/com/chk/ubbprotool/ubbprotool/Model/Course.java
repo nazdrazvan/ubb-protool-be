@@ -32,7 +32,7 @@ public class Course {
     @Column(name="end_date") @NonNull
     private Date courseEndDate;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "course")
     Set<UniversityClass> classes;
 
 

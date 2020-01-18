@@ -1,6 +1,7 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
+import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,12 @@ public interface UniversityClassService {
 
     UniversityClassDTO findById(Long id);
 
-    List<UniversityClassDTO> getClassesForStudent(Long studentDTO, Date currentDate);
-
+    List<UniversityClassDTO> getClassesForStudent(Long studentDTO, Date currentDate, List<ChangeDTO> changes) throws Exception;
     List<UniversityClassDTO> getClassesForTeacher(Long teacherDTO, Date currentDate);
 
     List<StudentDTO> findAllStudentsByClassId(Long classId);
 
     List<UniversityClassDTO> getPossibleClassesToBeChanged(Long classId, Date currentDate);
+
 
 }

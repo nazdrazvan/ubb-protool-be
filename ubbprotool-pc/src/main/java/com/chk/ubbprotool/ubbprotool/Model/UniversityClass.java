@@ -48,7 +48,7 @@ public class UniversityClass {
     @JoinColumn(name="subgroup_id", nullable=false)
     private Subgroup subgroup;
 
-    @OneToMany(mappedBy = "universityClass")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "universityClass")
     Set<Change> changes;
 
 }
