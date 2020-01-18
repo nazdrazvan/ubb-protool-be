@@ -28,9 +28,9 @@ public class SubgroupController {
         return ResponseEntity.ok("Subgroup saved");
     }
 
-    @PostMapping("/deleteSubgroup")
-    public ResponseEntity<String> deleteSubgroup(@RequestParam("SubgroupId") int theId) {
-        subgroupService.deleteSubgroup(theId);
+    @PostMapping("/deleteSubgroup/{subgroupId}")
+    public ResponseEntity<String> deleteSubgroup(@PathVariable("subgroupId") int subgroupId) {
+        subgroupService.deleteSubgroup(subgroupId);
         return ResponseEntity.ok("Subgroup deleted");
     }
 
