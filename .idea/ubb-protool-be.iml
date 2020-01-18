@@ -5,7 +5,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" />
-          <unit-entry name="ubbprotool-pc:src:main:resources:hibernate.cfg.xml" />
+          <unit-entry name="ubbprotool-pc:src:main:resources:hibernate.cfg.xml" value="aff16581-aafb-48b4-b95e-16eb1569818e" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/ubbprotool-pc/src/main/resources/hibernate.cfg.xml" />
