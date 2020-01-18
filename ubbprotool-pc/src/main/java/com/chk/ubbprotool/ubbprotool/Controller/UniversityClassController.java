@@ -1,8 +1,10 @@
 package com.chk.ubbprotool.ubbprotool.Controller;
 
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
+import com.chk.ubbprotool.ubbprotool.Service.ChangeService;
 import com.chk.ubbprotool.ubbprotool.Service.UniversityClassService;
 import com.chk.ubbprotool.ubbprotool.Service.UniversityClassService;
+import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.dto.UniversityClassDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ import java.util.Set;
 public class UniversityClassController {
     @Autowired
     private UniversityClassService universityClassService;
+
+    @Autowired
+    private ChangeService changeService;
 
     @GetMapping("/list")
     public ResponseEntity<List<UniversityClassDTO>> listClasses() {
@@ -45,11 +50,11 @@ public class UniversityClassController {
         return ResponseEntity.ok("UniversityClass updated");
     }
 
-    @PostMapping("/getScheduleStudent/{studentId}/{date}")
-    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@PathVariable("studentId") Long studentId , @PathVariable("date")String date)
-    {
+    @GetMapping("/getScheduleStudent/{studentId}/{date}")
+    public ResponseEntity<List<UniversityClassDTO>> getClassesForStudent(@PathVariable("studentId") String studentId , @PathVariable("date")String date) throws Exception {
+        List<ChangeDTO> changes = changeService.findAllChangesByStudentId(Long.parseLong(studentId));
         Date currentDate=Date.valueOf(date);//converting string into sql date
-       return ResponseEntity.ok(universityClassService.getClassesForStudent(studentId, currentDate));
+        return ResponseEntity.ok(universityClassService.getClassesForStudent(Long.parseLong(studentId), currentDate, changes));
     }
 
     @PostMapping("/getScheduleTeacher/{teacherId}/{date}")
