@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public interface TeacherService {
 
-    void createTeacher(TeacherDTO teacher );
+    void createTeacher(TeacherDTO teacher);
 
-    void deleteTeacher(int teacherId);
+    void deleteTeacher(Long teacherId);
 
     void editTeacher(TeacherForEditDTO teacher);
 
@@ -21,5 +21,7 @@ public interface TeacherService {
     TeacherDTO findById(Long id);
 
     TeacherDTO findTeacherByEmailAndPassword(String email, String password);
+
+    void activateTeacher(TeacherDTO teacher) throws Exception;
 
 }
