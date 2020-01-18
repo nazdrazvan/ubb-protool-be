@@ -4,6 +4,7 @@ package com.chk.ubbprotool.ubbprotool.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -19,10 +20,8 @@ public class Teacher {
     @Column(name="id")
     private int teacherId;
 
-
     @Column(name="department") @NonNull
     private String teacherDepartment;
-
 
     @Column(name="thesis_availability") @NonNull
     private boolean teacherAvailability;
@@ -52,7 +51,7 @@ public class Teacher {
     private String teacherWebSite;
 
     @OneToMany(mappedBy = "teacher")
-    Set<UniversityClass> classes;
+    List<UniversityClass> classes;
 
 
 
