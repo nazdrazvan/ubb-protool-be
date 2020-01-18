@@ -40,9 +40,9 @@ public class AppContext {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:1234/ubbprotool");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/ubbprotool");
         dataSource.setUsername("root");
-        dataSource.setPassword("parola");
+        dataSource.setPassword("parola12");
 
         return dataSource;
     }

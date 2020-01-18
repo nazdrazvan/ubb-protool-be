@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private TeacherService teacherService;
 
-    @GetMapping("/login/email-and-password")
+    @PostMapping("/login/email-and-password")
     public ResponseEntity<?> verifyEmailAndPassword(@RequestBody StudentDTO studentDTONotStud) throws IOException {
         StudentDTO studentDTO = studentService.findStudentByEmailAndPassword(studentDTONotStud.getEmail(), studentDTONotStud.getPassword());
         TeacherDTO teacherDTO = teacherService.findTeacherByEmailAndPassword(studentDTONotStud.getEmail(), studentDTONotStud.getPassword());
