@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public interface UniversityClassService {
@@ -21,4 +22,7 @@ public interface UniversityClassService {
     UniversityClassDTO findById(Long id);
 
     List<UniversityClassDTO> getClassesForStudent(Long studentDTO, Date currentDate);
+
+    List<UniversityClassDTO> getClassesForTeacher(int teacherDTO, Date currentDate);
+
 }

@@ -41,9 +41,9 @@ public class ChangeController {
         return ResponseEntity.ok("Change updated");
     }
 
-    @GetMapping("/get-changes-by-student-id/{studentId}")
-    public ResponseEntity<List<ChangeDTO>> getAllChangesOfAStudentById(@PathVariable("studentId") int studentId) {
-        return new ResponseEntity<>(changeService.findAllChangesByStudentId(studentId), HttpStatus.OK);
-    }
+//    @GetMapping("/get-changes-by-student-id/{studentId}")
+//    public ResponseEntity<List<ChangeDTO>> getAllChangesOfAStudentById(@PathVariable("studentId") int studentId) {
+//        return new ResponseEntity<>(changeService.findAllChangesByStudentId(studentId), HttpStatus.OK);
+//    }
 
 }

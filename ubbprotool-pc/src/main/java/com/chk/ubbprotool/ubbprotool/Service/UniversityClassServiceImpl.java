@@ -2,7 +2,10 @@ package com.chk.ubbprotool.ubbprotool.Service;
 
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
+import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
+import com.chk.ubbprotool.ubbprotool.Repository.*;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
 import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
 import com.chk.ubbprotool.ubbprotool.Repository.UniversityClassRepository;
@@ -27,6 +30,9 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
 
     @Autowired
     private SubgroupRepository subgroupRepository;
@@ -95,10 +101,28 @@ public class UniversityClassServiceImpl implements UniversityClassService{
 
             if(clasa.getClassWeek() == 0 || clasa.getClassWeek() == currentWeek % 2)
             dtoList.add(universityClassMapper.toDTO(clasa));
-
-
         }
 
+        return dtoList;
+    }
+
+    @Override
+    @Transactional
+    public List<UniversityClassDTO> getClassesForTeacher(int teacherId, Date date) {
+
+        Teacher teacher = teacherRepository.findById(teacherId);
+
+        List<UniversityClass> classes = teacher.getClasses();
+
+        List<UniversityClassDTO> dtoList = new ArrayList<>();
+
+        for (UniversityClass clasa : classes)
+        {
+            int currentWeek = weeksRepository.findByDate(date);
+
+            if(clasa.getClassWeek() == 0 || clasa.getClassWeek() == currentWeek % 2)
+                dtoList.add(universityClassMapper.toDTO(clasa));
+        }
         return dtoList;
     }
 }

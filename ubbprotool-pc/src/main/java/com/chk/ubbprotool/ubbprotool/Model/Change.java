@@ -34,10 +34,10 @@ public class Change {
     @ManyToOne
     @JoinColumn(name="student_id", nullable=false)
     private Student student;
-
-    @OneToOne
-    @JoinColumn(name="message_id",nullable = false)
-    private Message message;
+//pentru db sa se schimbe trebuie stearsa si creata din nou manual
+//    @OneToOne
+//    @JoinColumn(name="message_id",nullable = false)
+//    private Message message;
 
 
 

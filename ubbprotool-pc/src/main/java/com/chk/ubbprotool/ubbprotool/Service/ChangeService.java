@@ -15,7 +15,8 @@ public interface ChangeService {
     void upgradeChange(ChangeDTO change);
 
     List<ChangeDTO> findAllChanges();
-    List<ChangeDTO> findAllChangesByStudentId(int studentId);
+    
+//    List<ChangeDTO> findAllChangesByStudentId(int studentId);
 
     ChangeDTO findById(int id);
 

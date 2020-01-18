@@ -2,8 +2,10 @@ package com.chk.ubbprotool.ubbprotool.Service;
 
 import com.chk.ubbprotool.ubbprotool.Model.Change;
 import com.chk.ubbprotool.ubbprotool.Repository.ChangeRepository;
+import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
 import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
 import com.chk.ubbprotool.ubbprotool.mapper.ChangeMapper;
+import org.apache.tomcat.jni.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
@@ -18,6 +20,9 @@ public class ChangeServiceImpl implements ChangeService {
 
     @Autowired
     private ChangeRepository changeRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @Autowired
     private ChangeMapper changeMapper;
@@ -54,18 +59,21 @@ public class ChangeServiceImpl implements ChangeService {
         return changeDTOList;
     }
 
-    @Override
-    @Transactional
-    public List<ChangeDTO> findAllChangesByStudentId(int studentId) {
-        List<Change> allChanges = changeRepository.findAll();
-        List<ChangeDTO> dtoChangesOfStudent = new ArrayList<>();
-        allChanges.forEach(change -> {
-            if (studentId == change.getStudent().getStudentId()){
-                dtoChangesOfStudent.add(changeMapper.toDTO(change));
-            }
-        });
-        return dtoChangesOfStudent;
-    }
+//    @Override
+//    @Transactional
+//    public List<ChangeDTO> findAllChangesByStudentId(int studentId) {
+//        if (studentRepository.findById(studentId) == null){
+//            throw new RuntimeException("Student does not exist!");
+//        }
+//        List<Change> allChanges = changeRepository.findAll();
+//        List<ChangeDTO> dtoChangesOfStudent = new ArrayList<>();
+//        allChanges.forEach(change -> {
+//            if (studentId == change.getStudent().getStudentId()){
+//                dtoChangesOfStudent.add(changeMapper.toDTO(change));
+//            }
+//        });
+//        return dtoChangesOfStudent;
+//    }
 
 
     @Override
