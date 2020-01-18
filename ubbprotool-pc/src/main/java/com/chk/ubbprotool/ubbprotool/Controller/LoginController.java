@@ -29,14 +29,14 @@ public class LoginController {
         TeacherDTO teacherDTO = teacherService.findTeacherByEmailAndPassword(studentDTONotStud.getEmail(), studentDTONotStud.getPassword());
 
         if (studentDTO == null && teacherDTO == null){
-            return new ResponseEntity<>("User can not be found!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
         if (studentDTO != null && teacherDTO == null){
-            return new ResponseEntity<>(studentDTO, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(studentDTO, HttpStatus.FOUND);
         }
 
-        return new ResponseEntity<>(teacherDTO, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(teacherDTO, HttpStatus.FOUND);
     }
 
 }
