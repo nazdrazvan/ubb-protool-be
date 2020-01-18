@@ -2,6 +2,7 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 
 import com.chk.ubbprotool.ubbprotool.Service.MessageService;
 import com.chk.ubbprotool.ubbprotool.dto.MessageDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,4 +41,8 @@ public class MessageController {
         return ResponseEntity.ok("Message updated");
     }
 
+    @GetMapping("/findAllMessagesByTeacherId")
+    public ResponseEntity<List<MessageDTO>> studentClasses(@RequestParam("TeacherId") Long teacherId ) {
+        return ResponseEntity.ok(messageService.findAllMessagesByTeacherId(teacherId));
+    }
 }

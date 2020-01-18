@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public interface MessageService {
-    void createMessage(MessageDTO message );
+    void createMessage(MessageDTO message);
 
     void deleteMessage(int messageId);
 
@@ -16,4 +16,6 @@ public interface MessageService {
     List<MessageDTO> findAllMessages();
 
     MessageDTO findById(int id);
+
+    List<MessageDTO> findAllMessagesByTeacherId(Long teacherId);
 }
