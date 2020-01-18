@@ -4,6 +4,7 @@ package com.chk.ubbprotool.ubbprotool.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -44,7 +45,7 @@ public class Student {
     private Subgroup subgroup;
 
     @OneToMany(mappedBy = "student")
-    Set<Change> changes;
+    List<Change> changes;
 
 
 

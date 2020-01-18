@@ -29,7 +29,7 @@ public class CourseController {
     }
 
     @PostMapping("/deleteCourse/{courseId}")
-    public ResponseEntity<String> deleteCourse(@PathVariable("courseId") int courseId) {
+    public ResponseEntity<String> deleteCourse(@PathVariable("courseId") Long courseId) {
         courseService.deleteCourse(courseId);
         return ResponseEntity.ok("Course deleted");
     }

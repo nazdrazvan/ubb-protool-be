@@ -9,14 +9,13 @@ import java.util.List;
 public interface MessageService {
     void createMessage(MessageDTO message );
 
-    void deleteMessage(int messageId);
+    void deleteMessage(Long messageId);
 
     void upgradeMessage(MessageDTO message);
 
     List<MessageDTO> findAllMessages();
 
-    MessageDTO findById(int id);
-
     List<MessageDTO> findAllMessagesByTeacherId(Long teacherId);
 
+    MessageDTO findById(Long id);
 }

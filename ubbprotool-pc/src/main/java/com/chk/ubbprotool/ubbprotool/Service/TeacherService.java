@@ -2,6 +2,7 @@ package com.chk.ubbprotool.ubbprotool.Service;
 
 import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
+import com.chk.ubbprotool.ubbprotool.dto.TeacherForEditDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +14,11 @@ public interface TeacherService {
 
     void deleteTeacher(int teacherId);
 
-    void upgradeTeacher(TeacherDTO teacher);
+    void editTeacher(TeacherForEditDTO teacher);
 
     List<TeacherDTO> findAllTeachers();
 
-    TeacherDTO findById(int id);
+    TeacherDTO findById(Long id);
 
     TeacherDTO findTeacherByEmailAndPassword(String email, String password);
 

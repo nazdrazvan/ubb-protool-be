@@ -29,7 +29,7 @@ public class MessageController {
     }
 
     @PostMapping("/deleteMessage/{messageId}")
-    public ResponseEntity<String> deleteMessage(@PathVariable("messageId") int theId) {
+    public ResponseEntity<String> deleteMessage(@PathVariable("messageId") Long theId) {
         messageService.deleteMessage(theId);
         return ResponseEntity.ok("Message deleted");
     }

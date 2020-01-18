@@ -16,7 +16,7 @@ public class Message {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="message_id")
-    private int messageId;
+    private Long messageId;
      @Column(name="message_date") @NonNull
     private Date messageDate;
      @Column(name="message_time") @NonNull
