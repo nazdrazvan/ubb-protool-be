@@ -50,7 +50,7 @@ public class TeacherRepository {
     }
 
 
-    public Teacher findById(int theId) {
+    public Teacher findById(Integer theId) {
         try {
             Session currentSession = sessionFactory.getCurrentSession();
             return currentSession.get(Teacher.class, theId);
