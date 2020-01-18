@@ -1,6 +1,6 @@
 package com.chk.ubbprotool.ubbprotool.dto;
 
-import com.chk.ubbprotool.ubbprotool.Model.Message;
+import com.chk.ubbprotool.ubbprotool.Model.*;
 import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class ChangeDTO {
     private String changeStatus;
     private Date startDate;
     private Date endDate;
-    private UniversityClass universityClass;
+    private Long universityClassId;
     private Long studentId;
     //private int messageId;
 }

@@ -19,6 +19,7 @@ public interface ChangeService {
 //    List<ChangeDTO> findAllChangesByStudentId(int studentId);
 
     ChangeDTO findById(Long id);
+    List<ChangeDTO> findAllChangesByStudentId(Long studentId) throws Exception;
 
 
 

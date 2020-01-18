@@ -1,6 +1,7 @@
 package com.chk.ubbprotool.ubbprotool.Service;
 
 import com.chk.ubbprotool.ubbprotool.Model.Change;
+import com.chk.ubbprotool.ubbprotool.Model.Student;
 import com.chk.ubbprotool.ubbprotool.Repository.ChangeRepository;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
 import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
@@ -81,6 +82,27 @@ public class ChangeServiceImpl implements ChangeService {
     public ChangeDTO findById(Long id) {
         Change change = changeRepository.findById(id);
         return changeMapper.toDTO(change);
+    }
+    @Override
+    @Transactional
+    public List<ChangeDTO> findAllChangesByStudentId(Long studentId) throws Exception {
+
+        List<ChangeDTO> changeDTOList = new ArrayList<>();
+
+        Student student = studentRepository.findById(studentId);
+
+        if (student == null)
+            throw new Exception("Student doesn't exist");
+
+        if (student.getChanges() == null )
+            throw new Exception("No changes for this student");
+
+        for (Change change : student.getChanges()) {
+            changeDTOList.add(changeMapper.toDTO(change));
+        }
+
+
+        return changeDTOList;
     }
 
 }

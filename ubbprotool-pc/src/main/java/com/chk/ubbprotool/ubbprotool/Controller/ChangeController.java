@@ -40,6 +40,10 @@ public class ChangeController {
         changeService.upgradeChange(theChange);
         return ResponseEntity.ok("Change updated");
     }
+    @GetMapping("/get-changes-by-student-id/{studentId}")
+    public ResponseEntity<List<ChangeDTO>> getAllChangesOfAStudentById(@PathVariable("studentId") String studentId) throws Exception {
+        return new ResponseEntity<List<ChangeDTO>>(changeService.findAllChangesByStudentId(Long.parseLong(studentId)), HttpStatus.OK);
+    }
 
 //    @GetMapping("/get-changes-by-student-id/{studentId}")
 //    public ResponseEntity<List<ChangeDTO>> getAllChangesOfAStudentById(@PathVariable("studentId") int studentId) {
