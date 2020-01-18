@@ -25,10 +25,10 @@ public class Subgroup {
     @Column(name="subgroup_number") @NonNull
     private Integer subgroupNumber;
 
-    @OneToMany(mappedBy = "subgroup")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "subgroup")
     List<Student> students;
 
-    @OneToMany(mappedBy = "subgroup")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "subgroup")
     List<UniversityClass> classes;
 
 
