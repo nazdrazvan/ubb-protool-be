@@ -16,7 +16,7 @@ public class Change {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="change_id")
-    private int ChangeId;
+    private int changeId;
 
     @Column(name="change_status") @NonNull
     private String changeStatus;

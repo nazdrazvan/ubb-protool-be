@@ -56,8 +56,23 @@ public class ChangeServiceImpl implements ChangeService {
 
     @Override
     @Transactional
+    public List<ChangeDTO> findAllChangesByStudentId(int studentId) {
+        List<Change> allChanges = changeRepository.findAll();
+        List<ChangeDTO> dtoChangesOfStudent = new ArrayList<>();
+        allChanges.forEach(change -> {
+            if (studentId == change.getStudent().getStudentId()){
+                dtoChangesOfStudent.add(changeMapper.toDTO(change));
+            }
+        });
+        return dtoChangesOfStudent;
+    }
+
+
+    @Override
+    @Transactional
     public ChangeDTO findById(int id) {
         Change change = changeRepository.findById(id);
         return changeMapper.toDTO(change);
     }
+
 }
