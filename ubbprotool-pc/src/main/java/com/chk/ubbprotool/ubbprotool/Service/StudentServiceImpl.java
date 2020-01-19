@@ -82,11 +82,21 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public StudentDTO findStudentByEmailAndPassword(String email, String password) {
+    public StudentForRegisterDTO findStudentByEmailAndPassword(String email, String password) {
         Student student = studentRepository.findByEmailAndPassword(email, password);
         if (student == null) {
             return null;
         }
-        return studentMapper.toDTO(student);
+        return studentforRegisterMapper.toDTO(student);
+    }
+
+    @Override
+    @Transactional
+    public boolean checkIfStudentDoesNotExists(String email) throws Exception {
+        Student student = studentRepository.findByEmail(email);
+        if (student == null) {
+            return true;
+        }
+        throw new Exception("The student already has an account!");
     }
 }

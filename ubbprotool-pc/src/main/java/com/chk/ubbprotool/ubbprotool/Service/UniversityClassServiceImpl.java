@@ -5,6 +5,7 @@ import com.chk.ubbprotool.ubbprotool.Model.Subgroup;
 import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.Model.UniversityClass;
 import com.chk.ubbprotool.ubbprotool.Repository.*;
+import com.chk.ubbprotool.ubbprotool.dto.ChangeDTO;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
 import com.chk.ubbprotool.ubbprotool.Repository.StudentRepository;
 import com.chk.ubbprotool.ubbprotool.Repository.SubgroupRepository;
@@ -84,30 +85,51 @@ public class UniversityClassServiceImpl implements UniversityClassService{
     @Transactional
     public UniversityClassDTO findById(Long id) {
         UniversityClass universityClass = universityClassRepository.findById(id);
+        if (universityClass == null) {
+            return null;
+        }
         return universityClassMapper.toDTO(universityClass);
     }
 
     @Override
     @Transactional
-    public List<UniversityClassDTO> getClassesForStudent(Long studentId, Date date) {
+    public List<UniversityClassDTO> getClassesForStudent(Long studentId, Date date, List<ChangeDTO> changes) throws Exception {
 
         Student student = studentRepository.findById(studentId);
+        if(student == null)
+            throw new Exception("Student doesn't exist!");
 
         Subgroup studentSubgroup = subgroupRepository.findById(student.getSubgroup().getSubgroupId());
 
         List<UniversityClass> classes = studentSubgroup.getClasses();
 
-        List<UniversityClassDTO> dtoList = new ArrayList<>();
+        List<UniversityClassDTO> classesDto = new ArrayList<>();
+
 
         for (UniversityClass clasa : classes)
         {
             int currentWeek = weeksRepository.findByDate(date);
 
             if(clasa.getClassWeek() == 0 || clasa.getClassWeek()%2 == currentWeek % 2)
-            dtoList.add(universityClassMapper.toDTO(clasa));
+                classesDto.add(universityClassMapper.toDTO(clasa));
         }
 
-        return dtoList;
+        for(ChangeDTO change: changes) {
+            if(change.getEndDate().compareTo(date) >= 0 && change.getChangeStatus().equals("accepted"))
+            {
+                UniversityClassDTO new_class = this.findById(change.getUniversityClassId());
+                for(UniversityClassDTO clasa: classesDto)
+                {
+                    if(clasa.getCourseId() == new_class.getCourseId() && clasa.getClassType().equals(new_class.getClassType()))
+                    {
+                        classesDto.remove(clasa);
+                        classesDto.add(new_class);
+                    }
+                }
+            }
+        }
+
+        return classesDto;
     }
 
     @Override
@@ -169,14 +191,14 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         {
             for(UniversityClassDTO clasa: this.findAllUniversityClasses())
             {
-                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && (clasa.getClassWeek() == 2 || clasa.getClassWeek() == 0))
+                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && (clasa.getClassWeek() == 2 || clasa.getClassWeek() == 0) && clasa.getClassId() != classId)
                     classes.add(clasa);
             }
         }
         else if(week == 1){
             for(UniversityClassDTO clasa: this.findAllUniversityClasses())
             {
-                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId)
+                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && clasa.getClassId() != classId)
                     classes.add(clasa);
             }
         }

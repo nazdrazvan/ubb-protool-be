@@ -50,7 +50,7 @@ public class Teacher {
     @Column(name="website") @NonNull
     private String teacherWebSite;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "teacher")
     List<UniversityClass> classes;
 
 

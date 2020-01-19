@@ -44,7 +44,7 @@ public class Student {
     @JoinColumn(name="subgroup_id", nullable=false)
     private Subgroup subgroup;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(cascade = CascadeType.REMOVE ,mappedBy = "student")
     List<Change> changes;
 
 

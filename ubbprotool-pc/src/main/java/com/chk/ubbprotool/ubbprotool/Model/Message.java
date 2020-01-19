@@ -19,8 +19,7 @@ public class Message {
     private Long messageId;
      @Column(name="message_date") @NonNull
     private Date messageDate;
-     @Column(name="message_time") @NonNull
-    private Time messageTime;
+
      @Column(name="text") @NonNull
     private String messageText;
 

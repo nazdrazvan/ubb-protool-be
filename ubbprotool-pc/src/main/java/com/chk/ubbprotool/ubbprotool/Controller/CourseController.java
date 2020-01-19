@@ -3,6 +3,7 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 import com.chk.ubbprotool.ubbprotool.Service.CourseService;
 import com.chk.ubbprotool.ubbprotool.dto.CourseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,11 @@ public class CourseController {
     public ResponseEntity<String> updateCourse(@RequestBody CourseDTO theCourse) throws IOException {
         courseService.upgradeCourse(theCourse);
         return ResponseEntity.ok("Course updated");
+    }
+
+    @GetMapping("/get-by-id/{courseId}")
+    public ResponseEntity<CourseDTO> getCourseById(@PathVariable("courseId") Long courseId) throws IOException {
+        return new ResponseEntity<>(courseService.findById(courseId), HttpStatus.OK);
     }
 
 }

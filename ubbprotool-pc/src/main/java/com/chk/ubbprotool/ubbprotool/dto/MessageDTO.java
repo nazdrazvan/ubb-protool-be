@@ -20,7 +20,6 @@ import java.sql.Time;
 public class MessageDTO {
     private Long messageId;
     private Date messageDate;
-    private Time messageTime;
     private String messageText;
     private Long changeId;
 }

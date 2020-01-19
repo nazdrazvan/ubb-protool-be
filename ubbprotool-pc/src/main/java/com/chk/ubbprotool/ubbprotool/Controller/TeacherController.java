@@ -23,15 +23,20 @@ public class TeacherController {
         return  ResponseEntity.ok(teacherService.findAllTeachers());
     }
 
-
     @PostMapping("/saveTeacher")
     public ResponseEntity<String> saveTeacher(@RequestBody TeacherDTO theTeacher) throws IOException {
         teacherService.createTeacher(theTeacher);
         return ResponseEntity.ok("Teacher saved");
     }
 
+    @PostMapping("/activateTeacher")
+    public ResponseEntity<String> activateTeacher(@RequestBody TeacherDTO teacher) throws Exception {
+        teacherService.activateTeacher(teacher);
+        return ResponseEntity.ok("Teacher activated");
+    }
+
     @PostMapping("/deleteTeacher/{teacherId}")
-    public ResponseEntity<String> deleteTeacher(@PathVariable("teacherId") int teacherId) {
+    public ResponseEntity<String> deleteTeacher(@PathVariable("teacherId") Long teacherId) {
         teacherService.deleteTeacher(teacherId);
         return ResponseEntity.ok("Teacher deleted");
     }
@@ -46,7 +51,4 @@ public class TeacherController {
     public ResponseEntity<TeacherDTO> getTeacherById(@PathVariable("teacherId") Long teacherId) {
         return new ResponseEntity<>(teacherService.findById(teacherId), HttpStatus.OK);
     }
-
-
-
 }
