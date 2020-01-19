@@ -24,9 +24,8 @@ public class ChangeController {
 
 
     @PostMapping("/saveChange")
-    public ResponseEntity<String> saveChange(@RequestBody ChangeDTO theChange) throws IOException {
-        changeService.createChange(theChange);
-        return ResponseEntity.ok("Change saved");
+    public ResponseEntity<Long> saveChange(@RequestBody ChangeDTO theChange) throws IOException {
+        return new ResponseEntity<>(changeService.createChange(theChange), HttpStatus.CREATED);
     }
 
     @PostMapping("/deleteChange/{changeId}")
@@ -42,7 +41,7 @@ public class ChangeController {
     }
     @GetMapping("/get-changes-by-student-id/{studentId}")
     public ResponseEntity<List<ChangeDTO>> getAllChangesOfAStudentById(@PathVariable("studentId") String studentId) throws Exception {
-        return new ResponseEntity<List<ChangeDTO>>(changeService.findAllChangesByStudentId(Long.parseLong(studentId)), HttpStatus.OK);
+        return new ResponseEntity<>(changeService.findAllChangesByStudentId(Long.parseLong(studentId)), HttpStatus.OK);
     }
 
 //    @GetMapping("/get-changes-by-student-id/{studentId}")

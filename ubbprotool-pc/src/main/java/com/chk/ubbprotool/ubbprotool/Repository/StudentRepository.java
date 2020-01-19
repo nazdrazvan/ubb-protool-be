@@ -76,4 +76,17 @@ public class StudentRepository  {
         }
         return foundStud;
     }
+
+    public Student findByEmail(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        Query hql = session.createQuery("from Student s where s.email = :email")
+                .setParameter("email", email);
+        Student foundStud = null;
+        try {
+            foundStud = (Student) hql.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+        return foundStud;
+    }
 }

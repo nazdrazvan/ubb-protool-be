@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface ChangeService {
 
-    void createChange(ChangeDTO change );
+    Long createChange(ChangeDTO change );
 
     void deleteChange(Long changeId);
 
