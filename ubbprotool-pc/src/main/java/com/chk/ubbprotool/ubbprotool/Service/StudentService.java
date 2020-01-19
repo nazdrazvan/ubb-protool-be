@@ -20,6 +20,7 @@ public interface StudentService {
 
      StudentDTO findById(Long id);
 
-     StudentDTO findStudentByEmailAndPassword(String email, String password);
+     StudentForRegisterDTO findStudentByEmailAndPassword(String email, String password);
 
+     boolean checkIfStudentDoesNotExists(String email) throws Exception;
 }

@@ -3,6 +3,7 @@ package com.chk.ubbprotool.ubbprotool.Controller;
 import com.chk.ubbprotool.ubbprotool.Service.StudentService;
 import com.chk.ubbprotool.ubbprotool.Service.TeacherService;
 import com.chk.ubbprotool.ubbprotool.dto.StudentDTO;
+import com.chk.ubbprotool.ubbprotool.dto.StudentForRegisterDTO;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class UserController {
 
     @PostMapping("/login/email-and-password")
     public ResponseEntity<?> verifyEmailAndPassword(@RequestBody StudentDTO studentDTONotStud) throws IOException {
-        StudentDTO studentDTO = studentService.findStudentByEmailAndPassword(studentDTONotStud.getEmail(), studentDTONotStud.getPassword());
+        StudentForRegisterDTO studentDTO = studentService.findStudentByEmailAndPassword(studentDTONotStud.getEmail(), studentDTONotStud.getPassword());
         TeacherDTO teacherDTO = teacherService.findTeacherByEmailAndPassword(studentDTONotStud.getEmail(), studentDTONotStud.getPassword());
 
         if (studentDTO == null && teacherDTO == null){

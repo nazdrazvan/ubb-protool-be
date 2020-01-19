@@ -17,7 +17,7 @@ public class TeacherForEditMapper {
     public Teacher toEntity(TeacherForEditDTO teach) {
         Teacher teacher = teacherRepository.findById(teach.getTeacherId());
         teacher.setTeacherFirstName(teach.getTeacherFirstName());
-        teacher.setTeacherLastName(teach.getTeacherFirstName());
+        teacher.setTeacherLastName(teach.getTeacherLastName());
         teacher.setTeacherWebSite(teach.getTeacherWebSite());
         teacher.setTeacherAvailability(teach.getTeacherAvailability());
         return teacher;
