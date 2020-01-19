@@ -30,8 +30,8 @@ public class ChangeServiceImpl implements ChangeService {
 
     @Override
     @Transactional
-    public void createChange(ChangeDTO change) {
-        changeRepository.saveData(changeMapper.toEntity(change));
+    public Long createChange(ChangeDTO change) {
+        return changeRepository.saveData(changeMapper.toEntity(change));
     }
 
     @Override
