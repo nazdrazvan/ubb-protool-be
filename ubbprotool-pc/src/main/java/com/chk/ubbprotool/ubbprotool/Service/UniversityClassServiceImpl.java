@@ -188,14 +188,14 @@ public class UniversityClassServiceImpl implements UniversityClassService{
         {
             for(UniversityClassDTO clasa: this.findAllUniversityClasses())
             {
-                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && (clasa.getClassWeek() == 2 || clasa.getClassWeek() == 0))
+                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && (clasa.getClassWeek() == 2 || clasa.getClassWeek() == 0) && clasa.getClassId() != classId)
                     classes.add(clasa);
             }
         }
         else if(week == 1){
             for(UniversityClassDTO clasa: this.findAllUniversityClasses())
             {
-                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId)
+                if(clasa.getClassType().equals(type) && clasa.getCourseId() == courseId && clasa.getClassId() != classId)
                     classes.add(clasa);
             }
         }
