@@ -44,9 +44,10 @@ public class ChangeRepository {
     }
 
 
-    public void saveData(Change change) {
+    public Long saveData(Change change) {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.save(change);
+        return change.getChangeId();
     }
 
 
