@@ -1,6 +1,5 @@
 package com.chk.ubbprotool.ubbprotool.Controller;
 
-import com.chk.ubbprotool.ubbprotool.Model.Teacher;
 import com.chk.ubbprotool.ubbprotool.Service.TeacherService;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherDTO;
 import com.chk.ubbprotool.ubbprotool.dto.TeacherForEditDTO;
@@ -23,7 +22,6 @@ public class TeacherController {
     public ResponseEntity<List<TeacherDTO>> listTeachers() {
         return  ResponseEntity.ok(teacherService.findAllTeachers());
     }
-
 
     @PostMapping("/saveTeacher")
     public ResponseEntity<String> saveTeacher(@RequestBody TeacherDTO theTeacher) throws IOException {
@@ -53,7 +51,4 @@ public class TeacherController {
     public ResponseEntity<TeacherDTO> getTeacherById(@PathVariable("teacherId") Long teacherId) {
         return new ResponseEntity<>(teacherService.findById(teacherId), HttpStatus.OK);
     }
-
-
-
 }

@@ -76,7 +76,7 @@ public class TeacherRepository {
         Query hql = session.createQuery("update Teacher t set t.teacherAvailability = :thesisAvailability," +
                 " t.teacherFirstName = :firstName, t.teacherLastName = :lastName, t.password = :password" +
                 ", t.teacherEnabled = :enable, t.teacherFaculty = :faculty, t.teacherUniversity = :university" +
-                ", t.teacherWebSite = :website where t.email = :email")
+                ", t.teacherWebSite = :website, t.teacherDepartment = :department where t.email = :email")
                 .setParameter("email", teach.getEmail())
                 .setParameter("thesisAvailability", teach.isTeacherAvailability())
                 .setParameter("firstName", teach.getTeacherFirstName())
@@ -85,7 +85,8 @@ public class TeacherRepository {
                 .setParameter("enable", teach.isTeacherEnabled())
                 .setParameter("faculty", teach.getTeacherFaculty())
                 .setParameter("university", teach.getTeacherUniversity())
-                .setParameter("website", teach.getTeacherWebSite());
+                .setParameter("website", teach.getTeacherWebSite())
+                .setParameter("department", teach.getTeacherDepartment());
         int result = 0;
         try {
             result = hql.executeUpdate();

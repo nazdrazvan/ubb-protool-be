@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.io.IOException;
 import java.util.List;
 
@@ -25,11 +26,14 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findAllStudents());
     }
 
-
     @PostMapping("/saveStudent")
     public ResponseEntity<String> saveUser(@RequestBody StudentForRegisterDTO theStudent) throws Exception {
-        studentService.createStudent(theStudent);
-        return ResponseEntity.ok("Student saved");
+        if (studentService.checkIfStudentDoesNotExists(theStudent.getEmail())) {
+            studentService.createStudent(theStudent);
+            return ResponseEntity.ok("Student saved");
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+
     }
 
     @PostMapping("/deleteStudent/{userId}")
